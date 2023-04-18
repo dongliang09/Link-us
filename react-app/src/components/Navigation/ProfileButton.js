@@ -46,7 +46,11 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.id}</li>
-            <li onClick={()=>history.push(`/user/${user.id}`)}>View Profile</li>
+            <li>
+              <button onClick={()=>history.push(`/user/${user.id}`)}>
+                View Profile
+              </button>
+            </li>
             <li>
               <div>
                 <p>Manage</p>

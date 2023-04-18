@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 
@@ -30,6 +30,7 @@ function SignupFormPage() {
   return (
     <>
       <h1>Sign Up</h1>
+      <h3>Make the most of your professional life</h3>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -53,7 +54,7 @@ function SignupFormPage() {
           />
         </label>
         <label>
-          Password
+          Password (6 or more characters)
           <input
             type="password"
             value={password}
@@ -72,6 +73,7 @@ function SignupFormPage() {
         </label>
         <button type="submit">Sign Up</button>
       </form>
+      <div>Already on Link-us? <Link to="/login">Login</Link></div>
     </>
   );
 }
