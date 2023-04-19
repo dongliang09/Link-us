@@ -17,3 +17,13 @@ a:link {
 }
 
 /*============= className ============*/
+
+.border-red {
+  border: 2px solid red;
+}
+
+
+.grid-1-5-1 {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}

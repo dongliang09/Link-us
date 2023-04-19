@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-function postCard() {
+function PostCard({post}) {
   return (
-    <div>
-
+    <div className="border-red">
+      <p>"user":{post.user_id}</p>
+      <p>
+        "post content":{post.content}
+      </p>
     </div>
   )
 }
 
-export default postCard
+export default PostCard
