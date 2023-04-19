@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, environment, SCHEMA
 from .user import User
 from .post import Post
-from .db import environment, SCHEMA
+from .comment import Comment

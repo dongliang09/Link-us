@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship("Post",back_populates="user")
 
+    comments = db.relationship("Comment",back_populates="user")
+
     @property
     def password(self):
         return self.hashed_password

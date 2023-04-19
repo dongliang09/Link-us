@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, ValidationError
-from app.models import User
+from app.models import Post
 
-class SignUpForm(FlaskForm):
+class PostForm(FlaskForm):
     content = StringField('content', validators=[DataRequired()])
