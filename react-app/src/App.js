@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import FeedPage from "./components/FeedPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/feed">
-            <div>Feed</div>
+            <FeedPage />
           </Route>
           <Route path="/user/:userId">
             <div>Profile</div>
