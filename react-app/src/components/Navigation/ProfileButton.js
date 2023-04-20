@@ -28,9 +28,10 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(logout());
+    await dispatch(logout());
+    history.push("/")
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -53,7 +54,7 @@ function ProfileButton({ user }) {
             <li>
               <div>
                 <p>Manage</p>
-                <button>Posts</button>
+                <button onClick={()=>history.push(`/manage`)}>Posts</button>
               </div>
             </li>
             <li>

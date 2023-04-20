@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect,useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 
@@ -13,6 +13,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -22,6 +23,8 @@ function SignupFormPage() {
         const data = await dispatch(signUp(firstName, lastName, email, password));
         if (data) {
           setErrors(data)
+        } else {
+          history.push("/feed")
         }
     } else {
         setErrors(['Confirm Password field must be the same as the Password field']);

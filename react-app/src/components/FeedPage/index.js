@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { thunkGetAllPosts } from "../../store/post";
+import { thunkGetAllUsers } from "../../store/user";
 import PostCard from "./postCard";
 import PostInput from "./postInput";
 
@@ -9,13 +10,12 @@ function FeedPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allPosts = Object.values(useSelector((state) => state.posts.allPosts));
-
-  console.log(allPosts)
+  const allUsers = useSelector((state) => state.users.allUsers);
+  const history = useHistory();
 
   useEffect( ()=> {
-    console.log("useEffect")
     dispatch(thunkGetAllPosts())
-    console.log("useEffect2")
+    dispatch(thunkGetAllUsers())
   }, [dispatch])
 
   // if (sessionUser) return <Redirect to="/" />;
@@ -26,7 +26,7 @@ function FeedPage() {
       <div>
         <PostInput />
         <h1>all the posts</h1>
-        {allPosts.map((element)=><PostCard post={element} key={element.id}/>)}
+        {allPosts.map((aPost)=><PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>)}
       </div>
       <div>right panel</div>
     </div>
