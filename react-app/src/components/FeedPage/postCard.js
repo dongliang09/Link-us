@@ -13,7 +13,7 @@ function PostCard({post, user}) {
         <p>"user": {user?user.firstName:null} {user?user.lastName:null}</p>
         {sessionUser && user && sessionUser.id === user.id ? <div>
             <OpenModalButton
-              modalComponent={<PostInputPlain formType={"edit"}/>}
+              modalComponent={<PostInputPlain formType={"edit"} post={post}/>}
               buttonText={<span>update<i className="fas fa-edit"></i></span>} />
             <OpenModalButton
               modalComponent={<DeletePostModal postId={post.id}/>}

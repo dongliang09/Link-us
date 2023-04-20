@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateNewPost, thunkUpdatePost } from "../../store/post";
 
-function PostInputPlain({formType}) {
+function PostInputPlain({formType, post}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [postInput, setPostInput] = useState("");
@@ -15,11 +15,17 @@ function PostInputPlain({formType}) {
     if (formType === "create") {
       await dispatch(thunkCreateNewPost({content:postInput}))
     } else {
-      // await dispatch(thunkUpdatePost({content}))
-      console.log(e.target)
+      await dispatch(thunkUpdatePost(post.id, {content:postInput}))
     }
     closeModal()
   }
+
+  useEffect(()=> {
+    // populate the post info on first render
+    if (formType === "edit") {
+      setPostInput(post.content)
+    }
+  },[])
 
   return (
     <div>
