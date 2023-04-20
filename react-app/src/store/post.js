@@ -16,11 +16,43 @@ const setAllPosts = (posts) => ({
 // });
 
 // ========== Thunk Action Creator=======
-export const thunkGetAllPosts = () =>  async (dispatch) => {
+export const thunkGetAllPosts = (postData) =>  async (dispatch) => {
   const response = await fetch('/api/posts')
   if (response.ok) {
     const data = await response.json()
     dispatch(setAllPosts(data.posts))
+  }
+}
+
+export const thunkCreateNewPost = (postData) =>  async (dispatch) => {
+  const response = await fetch('/api/posts', {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(postData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
+
+    // dispatch a thunk action
+    // because we want to see the latest posts from other users as well
+    // if we are taking too long to create a new post
+    // await dispatch(thunkGetAllPosts())
+  }
+}
+
+export const thunkUpdatePost = (postId, postData) =>  async (dispatch) => {
+  const response = await fetch(`/api/posts/${postId}`, {
+    method: 'PUT',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(postData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
+
+    // dispatch a thunk action
+    // because we want to see the latest posts from other users as well
+    // if we are taking too long to edit the post
+    await dispatch(thunkGetAllPosts())
   }
 }
 

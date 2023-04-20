@@ -31,8 +31,21 @@ function ProfileButton({ user }) {
   const handleLogout = async (e) => {
     e.preventDefault();
     await dispatch(logout());
-    history.push("/")
+    closeMenu();
+    history.push("/");
   };
+
+  const viewProfile = (e) => {
+    e.preventDefault();
+    closeMenu();
+    history.push(`/user/${user.id}`);
+  }
+
+  const managePosts = (e) => {
+    e.preventDefault();
+    closeMenu();
+    history.push(`/manage`);
+  }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
@@ -47,14 +60,12 @@ function ProfileButton({ user }) {
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={()=>history.push(`/user/${user.id}`)}>
-                View Profile
-              </button>
+              <button onClick={viewProfile}>View Profile</button>
             </li>
             <li>
               <div>
                 <p>Manage</p>
-                <button onClick={()=>history.push(`/manage`)}>Posts</button>
+                <button onClick={managePosts}>Posts</button>
               </div>
             </li>
             <li>
