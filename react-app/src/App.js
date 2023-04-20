@@ -31,6 +31,9 @@ function App() {
           <Route path="/feed">
             <FeedPage />
           </Route>
+          <Route path="/manage">
+            <div>Manage</div>
+          </Route>
           <Route path="/user/:userId">
             <div>Profile</div>
           </Route>
