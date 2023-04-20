@@ -16,7 +16,7 @@ function PostCard({post, user}) {
               modalComponent={<PostInputPlain formType={"edit"}/>}
               buttonText={<span>update<i className="fas fa-edit"></i></span>} />
             <OpenModalButton
-              modalComponent={<DeletePostModal />}
+              modalComponent={<DeletePostModal postId={post.id}/>}
               buttonText={<span>delete<i className="fas fa-trash-alt"></i></span>} />
         </div> : null}
       </div>

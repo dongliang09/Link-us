@@ -36,7 +36,7 @@ export const thunkCreateNewPost = (postData) =>  async (dispatch) => {
     // dispatch a thunk action
     // because we want to see the latest posts from other users as well
     // if we are taking too long to create a new post
-    // await dispatch(thunkGetAllPosts())
+    await dispatch(thunkGetAllPosts())
   }
 }
 
@@ -48,10 +48,16 @@ export const thunkUpdatePost = (postId, postData) =>  async (dispatch) => {
   })
   if (response.ok) {
     // const data = await response.json()
+    await dispatch(thunkGetAllPosts())
+  }
+}
 
-    // dispatch a thunk action
-    // because we want to see the latest posts from other users as well
-    // if we are taking too long to edit the post
+export const thunkDeletePost = (postId) =>  async (dispatch) => {
+  const response = await fetch(`/api/posts/${postId}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    // const data = await response.json()
     await dispatch(thunkGetAllPosts())
   }
 }
