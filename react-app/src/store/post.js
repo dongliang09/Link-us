@@ -17,12 +17,9 @@ const setAllPosts = (posts) => ({
 
 // ========== Thunk Action Creator=======
 export const thunkGetAllPosts = () =>  async (dispatch) => {
-  // console.log("fetch")
   const response = await fetch('/api/posts')
-  // console.log(response)
   if (response.ok) {
     const data = await response.json()
-    // console.log(data)
     dispatch(setAllPosts(data.posts))
   }
 }
