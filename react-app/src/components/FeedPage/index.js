@@ -42,7 +42,7 @@ function FeedPage() {
               <PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>
               <div  className="border-green mrg-15p">
                 <div>
-                  {sessionUser.firstName}
+                  {sessionUser?.firstName}
                 </div>
                 <CommentInput postId={aPost.id} formType="create"/>
               </div>

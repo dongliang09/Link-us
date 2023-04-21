@@ -6,7 +6,7 @@ function PostInputSelection({user}) {
 
   return (
     <div>
-      <div>"current user": {user.firstName}</div>
+      <div>"current user": {user?.firstName}</div>
       <OpenModalButton
         modalComponent={<PostInputPlain formType={"create"}/>}
         buttonText={"Start a post"} />
