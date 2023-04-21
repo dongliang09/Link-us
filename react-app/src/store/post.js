@@ -16,7 +16,7 @@ const setAllPosts = (posts) => ({
 // });
 
 // ========== Thunk Action Creator=======
-export const thunkGetAllPosts = (postData) =>  async (dispatch) => {
+export const thunkGetAllPosts = () =>  async (dispatch) => {
   const response = await fetch('/api/posts')
   if (response.ok) {
     const data = await response.json()

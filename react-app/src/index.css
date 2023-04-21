@@ -18,8 +18,20 @@ a:link {
 
 /*============= className ============*/
 
+.border-blue {
+  border: 2px solid blue;
+}
+
+.border-green {
+  border: 2px solid green;
+}
+
 .border-red {
   border: 2px solid red;
+}
+
+.mrg-15p {
+  margin: 15px;
 }
 
 
