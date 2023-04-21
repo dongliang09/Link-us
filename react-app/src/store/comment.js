@@ -17,7 +17,6 @@ export const thunkGetAllComments = () =>  async (dispatch) => {
 }
 
 export const thunkCreateNewComment = (postId, commentData) =>  async (dispatch) => {
-  console.log("thunk", postId, commentData)
   const response = await fetch(`/api/posts/${postId}/comments`, {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
@@ -33,27 +32,27 @@ export const thunkCreateNewComment = (postId, commentData) =>  async (dispatch) 
   }
 }
 
-// export const thunkUpdatePost = (postId, postData) =>  async (dispatch) => {
-//   const response = await fetch(`/api/posts/${postId}`, {
-//     method: 'PUT',
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify(postData)
-//   })
-//   if (response.ok) {
-//     // const data = await response.json()
-//     await dispatch(thunkGetAllPosts())
-//   }
-// }
+export const thunkUpdateComment = (commentId, commentData) =>  async (dispatch) => {
+  const response = await fetch(`/api/comments/${commentId}`, {
+    method: 'PUT',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(commentData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllComments())
+  }
+}
 
-// export const thunkDeletePost = (postId) =>  async (dispatch) => {
-//   const response = await fetch(`/api/posts/${postId}`, {
-//     method: 'DELETE',
-//   })
-//   if (response.ok) {
-//     // const data = await response.json()
-//     await dispatch(thunkGetAllPosts())
-//   }
-// }
+export const thunkDeleteComment = (commentId) =>  async (dispatch) => {
+  const response = await fetch(`/api/comments/${commentId}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllComments())
+  }
+}
 
 // =========== Reducer =================
 const initialState = { allComments: {} };

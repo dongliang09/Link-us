@@ -38,10 +38,15 @@ function FeedPage() {
         {allPosts.map((aPost)=>{
           const relatedComments = allComments.filter(element => aPost.id === element.post_id)
           return (
-            <div>
+            <div key={aPost.id}>
               <PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>
-              <CommentInput postId={aPost.id}/>
-              {relatedComments.map(comment => <CommentCard comment={comment} postOwner={allUsers[aPost.user_id]} user={allUsers[comment.user_id]}/>)}
+              <div  className="border-green mrg-15p">
+                <div>
+                  {sessionUser.firstName}
+                </div>
+                <CommentInput postId={aPost.id} formType="create"/>
+              </div>
+              {relatedComments.map(comment => <CommentCard comment={comment} postOwner={allUsers[aPost.user_id]} user={allUsers[comment.user_id]} key={comment.id} />)}
             </div>
           )
         }
