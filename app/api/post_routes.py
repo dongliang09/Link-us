@@ -3,6 +3,7 @@ from app.models import db, Post
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms import PostForm
+from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
@@ -47,7 +48,7 @@ def createPost():
     db.session.add(new_post)
     db.session.commit()
     return new_post.to_dict()
-  return {'error':validation_errors_to_error_messages(form.errors)}, 400
+  return {'error': validation_errors_to_error_messages(form.errors)}, 400
 
 
 #update post
@@ -63,9 +64,10 @@ def updatePost(id):
   if foundPost:
     if form.validate_on_submit():
       foundPost.content = form.data['content']
+      foundPost.updated_at = datetime.now()
       db.session.commit()
       return foundPost.to_dict()
-    return {'error':validation_errors_to_error_messages(form.errors)},400
+    return {'error': validation_errors_to_error_messages(form.errors)},400
   else:
     return {'error':"post not found"}, 404
 

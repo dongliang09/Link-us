@@ -9,6 +9,9 @@ const setAllUsers = (users) => ({
 
 // ========== Thunk Action Creator=======
 export const thunkGetAllUsers = () =>  async (dispatch) => {
+  // currently fetching all users,
+  // could potentially fetch a new route,
+  // which filters the users in the following list
   const response = await fetch('/api/users/')
   if (response.ok) {
     const data = await response.json()

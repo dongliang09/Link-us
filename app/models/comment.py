@@ -9,6 +9,7 @@ class Comment(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   content = db.Column(db.String(255), nullable=False)
+  image = db.Column(db.String(255))
   user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now())
@@ -22,7 +23,7 @@ class Comment(db.Model):
     return {
       'id': self.id,
       'content': self.content,
-      'image': self.image ,
+      'image': self.image,
       'user_id': self.user_id,
       'post_id': self.post_id,
       'created_at': self.created_at,
