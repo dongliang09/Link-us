@@ -16,21 +16,22 @@ export const thunkGetAllComments = () =>  async (dispatch) => {
   }
 }
 
-// export const thunkCreateNewPost = (postData) =>  async (dispatch) => {
-//   const response = await fetch('/api/posts', {
-//     method: 'POST',
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify(postData)
-//   })
-//   if (response.ok) {
-//     // const data = await response.json()
+export const thunkCreateNewComment = (postId, commentData) =>  async (dispatch) => {
+  console.log("thunk", postId, commentData)
+  const response = await fetch(`/api/posts/${postId}/comments`, {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(commentData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
 
-//     // dispatch a thunk action
-//     // because we want to see the latest posts from other users as well
-//     // if we are taking too long to create a new post
-//     await dispatch(thunkGetAllPosts())
-//   }
-// }
+    // dispatch a thunk action
+    // because we want to see the latest comments from other users as well
+    // if we are taking too long to create a new comment
+    await dispatch(thunkGetAllComments())
+  }
+}
 
 // export const thunkUpdatePost = (postId, postData) =>  async (dispatch) => {
 //   const response = await fetch(`/api/posts/${postId}`, {
