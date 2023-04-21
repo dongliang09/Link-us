@@ -38,6 +38,7 @@ def createPost():
   """
   form = PostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  print(form.data, current_user.id)
   if form.validate_on_submit():
     new_post = Post(
       content = form.data['content'],
@@ -46,7 +47,7 @@ def createPost():
     db.session.add(new_post)
     db.session.commit()
     return new_post.to_dict()
-  return {'error':"Bad Data"}, 400
+  return {'error':validation_errors_to_error_messages(form.errors)}, 400
 
 
 #update post
@@ -64,7 +65,7 @@ def updatePost(id):
       foundPost.content = form.data['content']
       db.session.commit()
       return foundPost.to_dict()
-    return {'error':"Bad Data"},400
+    return {'error':validation_errors_to_error_messages(form.errors)},400
   else:
     return {'error':"post not found"}, 404
 

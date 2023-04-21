@@ -23,10 +23,16 @@ def seed_posts():
 
   second_user = [new_friend, see_old_friend]
 
+  #wise words
+  code_last = Post(content="Typing codes should be the last thing you do", user_id = 1)
+
+  wise_words = [code_last]
+
   # add all data
   [db.session.add(post) for post in first_post]
   [db.session.add(post) for post in testing]
   [db.session.add(post) for post in second_user]
+  [db.session.add(post) for post in wise_words]
   db.session.commit()
 
 def undo_posts():
