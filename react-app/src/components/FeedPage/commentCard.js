@@ -11,7 +11,7 @@ function CommentCard({ comment, user, postOwner }) {
   return (
     <div className="border-blue mrg-15p">
       <div>
-        <p>"comment user": {user.firstName} {user.lastName}</p>
+        <p>"comment user": {user?.firstName} {user?.lastName}</p>
         {postOwner.id === user.id && <span>Author</span>}
         {sessionUser && user && sessionUser.id === user.id ? <div>
           <button onClick={()=>setEditComment(!editComment)}><span>Edit</span> <i className="fas fa-edit"></i></button>
