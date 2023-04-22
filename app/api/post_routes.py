@@ -42,7 +42,9 @@ def createPost():
   if form.validate_on_submit():
     new_post = Post(
       content = form.data['content'],
-      user_id = current_user.id
+      user_id = current_user.id,
+      created_at = datetime.now(),
+      updated_at = datetime.now()
     )
     db.session.add(new_post)
     db.session.commit()
@@ -101,7 +103,9 @@ def createNewComment(id):
     new_comment = Comment(
       content = form.data['content'],
       user_id = current_user.id,
-      post_id = id
+      post_id = id,
+      created_at = datetime.now(),
+      updated_at = datetime.now()
     )
     db.session.add(new_comment)
     db.session.commit()
