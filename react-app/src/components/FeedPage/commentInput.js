@@ -11,6 +11,7 @@ function CommentInput({ postId, comment, formType, setEdit}) {
     e.preventDefault();
     if (formType === "create") {
       await dispatch(thunkCreateNewComment(postId, {content:commentInput}))
+      setCommentInput("")
     } else {
       await dispatch(thunkUpdateComment(comment.id, {content:commentInput}))
       setEdit(false)

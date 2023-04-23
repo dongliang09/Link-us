@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import OpenModalButton from "../OpenModalButton"
 import PostInputPlain from './postInputPlain'
 
