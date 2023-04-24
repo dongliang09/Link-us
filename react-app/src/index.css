@@ -25,6 +25,10 @@ button:hover {
 }
 
 /*============= className ============*/
+.bg-white {
+  background-color: white;
+}
+
 .bg-main-blue {
   background-color: var(--main-blue);
 }
@@ -79,6 +83,10 @@ button:hover {
 
 .borderR-20p {
   border-radius: 20px;
+}
+
+.borderR-30p {
+  border-radius: 30px;
 }
 
 .borderR-30per {
@@ -171,6 +179,14 @@ button:hover {
   font-size: 3rem;
 }
 
+.fontS-400rem {
+  font-size: 4rem;
+}
+
+.fontS-450rem {
+  font-size: 4.5rem;
+}
+
 .fontW-600 {
   font-weight: 600;
 }
@@ -241,6 +257,10 @@ button:hover {
   margin-bottom: 5px;
 }
 
+.mrg-b-15p {
+  margin-bottom: 15px;
+}
+
 .mrg-tb-5p {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -262,6 +282,10 @@ button:hover {
 
 .pad-10p {
   padding: 10px;
+}
+
+.pad-15p {
+  padding: 15px;
 }
 
 .pad-lr-10p {
@@ -347,6 +371,10 @@ button:hover {
   max-width: 1000px;
 }
 
+.width-max-1100p {
+  max-width: 1100px;
+}
+
 .width-max-1300p {
   max-width: 1300px;
 }
@@ -357,10 +385,6 @@ button:hover {
 
 .width-1100p {
   width: 1100px;
-}
-
-.width-750rem {
-  width: 7.5rem;
 }
 
 .width-fit {

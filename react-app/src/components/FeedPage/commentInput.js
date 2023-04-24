@@ -30,8 +30,8 @@ function CommentInput({ postId, comment, formType, setEdit}) {
         <input value={commentInput} onChange={(e)=>setCommentInput(e.target.value)} required
           placeholder="Add a comment ..."/>
         {commentInput.length > 0 && <button> {formType === "create" ? "Post" : "Save"} </button>}
+        {formType === "edit" && <button type="button" onClick={()=>setEdit(false)}>Cancel</button>}
       </form>
-      {formType === "edit" && <button onClick={()=>setEdit(false)}>Cancel</button>}
     </div>
   )
 }

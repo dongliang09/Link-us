@@ -28,39 +28,40 @@ function FeedPage() {
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
-    <div className="grid-1-5-1 bg-gray pad-t-150rem">
-      <div>Left profile</div>
-      <div>
+    <div className="bg-gray pad-t-150rem">
+      <div className="grid-1-5-1 width-max-1100p mrg-lr-auto">
+        <div className="fontS-400rem"><i className="fas fa-user-circle"></i></div>
         <div>
-          <PostInputSelection user={sessionUser}/>
-        </div>
-        <h1>all the posts</h1>
-        {allPosts.map((aPost)=>{
-          const relatedComments = allComments.filter(element => aPost.id === element.post_id)
-          return (
-            <div key={aPost.id}>
-              <PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>
-              <div  className="border-green mrg-15p">
-                <div>
-                  {sessionUser?.firstName}
+          <div className="mrg-b-15p">
+            <PostInputSelection user={sessionUser}/>
+          </div>
+          {allPosts.map((aPost)=>{
+            const relatedComments = allComments.filter(element => aPost.id === element.post_id)
+            return (
+              <div key={aPost.id}>
+                <PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>
+                <div  className="border-green mrg-15p">
+                  <div>
+                    {sessionUser?.firstName}
+                  </div>
+                  <CommentInput postId={aPost.id} formType="create"/>
                 </div>
-                <CommentInput postId={aPost.id} formType="create"/>
+                {relatedComments.map(comment => <CommentCard comment={comment} postOwner={allUsers[aPost.user_id]} user={allUsers[comment.user_id]} key={comment.id} />)}
               </div>
-              {relatedComments.map(comment => <CommentCard comment={comment} postOwner={allUsers[aPost.user_id]} user={allUsers[comment.user_id]} key={comment.id} />)}
-            </div>
-          )
-        }
-        )}
-      </div>
-      <div>
-        <h3>Link-us News</h3>
-        <h4>Coming Features</h4>
-        <ul>
-          <li>Education</li>
-          <li>Skills</li>
-          <li>Following</li>
-          <li>Search</li>
-        </ul>
+            )
+          }
+          )}
+        </div>
+        <div>
+          <h3>Link-us News</h3>
+          <h4>Coming Features</h4>
+          <ul>
+            <li>Education</li>
+            <li>Skills</li>
+            <li>Following</li>
+            <li>Search</li>
+          </ul>
+        </div>
       </div>
     </div>
   )

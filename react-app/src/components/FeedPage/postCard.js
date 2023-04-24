@@ -10,7 +10,7 @@ function PostCard({post, user}) {
   return (
     <div className="border-red">
       <div>
-        <p>"user": {user?user.firstName:null} {user?user.lastName:null}</p>
+        <p><i className="fas fa-user-circle fontS-300rem"></i> {user?user.firstName:null} {user?user.lastName:null}</p>
         {sessionUser && user && sessionUser.id === user.id ? <div>
             <OpenModalButton
               modalComponent={<PostInputPlain formType={"edit"} post={post}/>}

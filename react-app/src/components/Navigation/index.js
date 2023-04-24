@@ -7,8 +7,10 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
+	let navFlex = sessionUser ? "flx " : "flx-jc-sb ";
+
 	return (
-		<ul className='flx width-max-1300p mrg-lr-auto gap-15p'>
+		<ul className={navFlex + "width-max-1300p mrg-lr-auto gap-15p"}>
 			<li className='li-none'>
 				<NavLink exact to="/">Link-us</NavLink>
 			</li>
