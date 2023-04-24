@@ -29,7 +29,7 @@ function FeedPage() {
 
   return (
     <div className="bg-gray pad-t-150rem">
-      <div className="grid-1-5-1 width-max-1100p mrg-lr-auto">
+      <div className="grid-1-5-1 gap-15p width-max-1100p mrg-lr-auto">
         <div className="fontS-400rem"><i className="fas fa-user-circle"></i></div>
         <div>
           <div className="mrg-b-15p">
@@ -39,14 +39,7 @@ function FeedPage() {
             const relatedComments = allComments.filter(element => aPost.id === element.post_id)
             return (
               <div key={aPost.id}>
-                <PostCard post={aPost} user={allUsers[aPost.user_id]} key={aPost.id}/>
-                <div  className="border-green mrg-15p">
-                  <div>
-                    {sessionUser?.firstName}
-                  </div>
-                  <CommentInput postId={aPost.id} formType="create"/>
-                </div>
-                {relatedComments.map(comment => <CommentCard comment={comment} postOwner={allUsers[aPost.user_id]} user={allUsers[comment.user_id]} key={comment.id} />)}
+                <PostCard post={aPost} user={allUsers[aPost.user_id]} relatedComments={relatedComments} key={aPost.id}/>
               </div>
             )
           }

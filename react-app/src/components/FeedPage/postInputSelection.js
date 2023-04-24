@@ -5,7 +5,7 @@ import PostInputPlain from './postInputPlain'
 function PostInputSelection({user}) {
 
   return (
-    <div className="flx bg-white pad-15p borderR-5p">
+    <div className="flx bg-white pad-15p borderR-10p boxS-0-0-2-gray">
       <i className="fas fa-user-circle fontS-300rem"></i> {user?.firstName}
         <OpenModalButton
           modalComponent={<PostInputPlain formType={"create"}/>}

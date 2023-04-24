@@ -93,6 +93,10 @@ button:hover {
   border-radius: 30%;
 }
 
+.boxS-0-0-2-gray {
+  box-shadow: 0px 0px 2px var(--main-gray)
+}
+
 .color-red {
   color: red;
 }
@@ -103,6 +107,14 @@ button:hover {
 
 .color-main-blue {
   color: var(--main-blue);
+}
+
+.color-main-blue-hover:hover {
+  color: var(--main-blue);
+}
+
+.color-second-blue {
+  color: var(--second-blue);
 }
 
 .color-main-gray {
