@@ -25,10 +25,10 @@ function FeedPage() {
     dispatch(thunkGetAllComments())
   }, [dispatch])
 
-  // if (!sessionUser) return <Redirect to="/" />;
+  if (!sessionUser) return <Redirect to="/" />;
 
   return (
-    <div className="grid-1-5-1">
+    <div className="grid-1-5-1 bg-gray pad-t-150rem">
       <div>Left profile</div>
       <div>
         <div>

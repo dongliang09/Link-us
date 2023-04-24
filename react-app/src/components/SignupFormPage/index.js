@@ -39,27 +39,32 @@ function SignupFormPage() {
 
       <form onSubmit={handleSubmit} className="flx-col width-50per">
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => <li key={idx} className="color-red">{error}</li>)}
         </ul>
 
         <label className="color-main-gray mrg-tb-5p">First Name</label>
-        <input type="text" value={firstName} required className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
+        <input type="text" value={firstName} required
+          className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
           onChange={(e) => setFirstName(e.target.value)}/>
 
         <label className="mrg-tb-5p color-main-gray">Last Name</label>
-        <input type="text" value={lastName} required className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
+        <input type="text" value={lastName} required
+          className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
           onChange={(e) => setLastName(e.target.value)}/>
 
         <label className="mrg-tb-5p color-main-gray">Email</label>
-        <input type="text" value={email} required className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
+        <input type="text" value={email} required
+          className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
           onChange={(e) => setEmail(e.target.value)}/>
 
         <label className="mrg-tb-5p color-main-gray">Password (6 or more characters)</label>
-        <input type="password" value={password} required className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
+        <input type="password" value={password} required
+          className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
           onChange={(e) => setPassword(e.target.value)} />
 
         <label className="mrg-tb-5p color-main-gray">Confirm password</label>
-        <input type="password" value={confirmPassword} required className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
+        <input type="password" value={confirmPassword} required
+          className="mrg-b-5p hgt-135rem pad-l-5p border-black-hover border-main-gray borderR-5p"
           onChange={(e) => setConfirmPassword(e.target.value)}/>
 
         <div className="mrg-tb-5p color-main-gray txt-ali-center">
@@ -67,7 +72,7 @@ function SignupFormPage() {
             buttonText="Cookie Policy" buttonTag="span" customizeStyle="fontW-600 color-main-blue cursor-pt-hover" />
         </div>
 
-        <button type="submit" className="bg-main-blue color-white pad-tb-13p mrg-tb-10p border-0p borderR-20p">
+        <button type="submit" className="bg-main-blue bg-deep-blue-hover color-white fontW-600 pad-tb-13p mrg-tb-10p border-0p borderR-20p">
           Sign Up
         </button>
       </form>

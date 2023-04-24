@@ -8,26 +8,26 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<li>
+		<ul className='flx width-max-1300p mrg-lr-auto gap-15p'>
+			<li className='li-none'>
 				<NavLink exact to="/">Link-us</NavLink>
 			</li>
 			{isLoaded && !sessionUser && (
-				<li>
-					<div>
-						<div><NavLink to="/signup">Sign up</NavLink></div>
-						<div><NavLink to="/login">Login</NavLink></div>
+				<li className='li-none'>
+					<div className='flx gap-2rem'>
+						<div><NavLink to="/signup" className="fontS-125rem">Sign up</NavLink></div>
+						<div><NavLink to="/login" className="fontS-125rem border-second-blue borderR-20p pad-10p">Login</NavLink></div>
 					</div>
 				</li>
 			)}
 			{isLoaded && sessionUser && (
-				<li>
-					<div>
-						<div>search bar</div>
-					</div>
-					<div>
-						<ProfileButton user={sessionUser} />
-					</div>
+				<li className='li-none flx-jc-sb width-max-1000p width-1100p'>
+						<div>
+							<div>search bar</div>
+						</div>
+						<div>
+							<ProfileButton user={sessionUser} />
+						</div>
 				</li>
 			)}
 		</ul>
