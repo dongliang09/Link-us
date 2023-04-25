@@ -11,12 +11,15 @@ function PostCard({post, user, relatedComments}) {
   const allUsers = useSelector((state) => state.users.allUsers);
   const [seeComment, setSeeComment] = useState(false);
 
+  // dafault profile pic to be light blue for other users, black for current user
+  let profileColor = (post.user_id === sessionUser?.id ? "" : "color-second-blue") + " fas fa-user-circle fontS-300rem";
+
   return (
     <div className="bg-white pad-15p borderR-10p boxS-0-0-2-gray mrg-tb-15p">
 
       <div className="flx-jc-sb">
         <div>
-          <i className="fas fa-user-circle fontS-300rem color-second-blue"></i> {user?user.firstName:null} {user?user.lastName:null}
+          <i className={profileColor}></i> {user?user.firstName:null} {user?user.lastName:null}
         </div>
         {sessionUser && user && sessionUser.id === user.id ? <div className="flx gap-15p">
             <OpenModalButton
@@ -39,19 +42,19 @@ function PostCard({post, user, relatedComments}) {
       <div className="flx-jc-sa">
         <button onClick={()=>alert("feature coming soon")}
           className="color-main-gray bg-white border-0p color-main-blue-hover" >
-          <i class="far fa-thumbs-up"></i> Like
+          <i className="far fa-thumbs-up"></i> Like
         </button>
         <button onClick={()=>setSeeComment(!seeComment)}
           className="color-main-gray bg-white border-0p color-main-blue-hover" >
-          <i class="far fa-comment-alt"></i> Comment
+          <i className="far fa-comment-alt"></i> Comment
         </button>
       </div>
 
       { seeComment && <div>
 
-        <div  className="border-green mrg-15p">
+        <div  className="flx mrg-15p">
           <div>
-            {sessionUser?.firstName}
+            <i className={profileColor}></i>
           </div>
           <CommentInput postId={post.id} formType="create"/>
         </div>
