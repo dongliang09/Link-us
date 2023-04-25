@@ -33,7 +33,19 @@ button:hover {
   background-color: var(--main-blue);
 }
 
+.bg-main-blue-hover:hover {
+  background-color: var(--main-blue);
+}
+
+.bg-main-gray {
+  background-color: var(--main-gray);
+}
+
 .bg-gray {
+  background-color: var(--bg-gray);
+}
+
+.bg-gray-hover:hover {
   background-color: var(--bg-gray);
 }
 
@@ -93,6 +105,10 @@ button:hover {
   border-radius: 30%;
 }
 
+.borderR-50per {
+  border-radius: 50%;
+}
+
 .boxS-0-0-2-gray {
   box-shadow: 0px 0px 2px var(--main-gray)
 }
@@ -102,6 +118,10 @@ button:hover {
 }
 
 .color-white {
+  color: white;
+}
+
+.color-white-hover:hover {
   color: white;
 }
 
@@ -123,6 +143,10 @@ button:hover {
 
 .cursor-pt-hover:hover {
   cursor: pointer;
+}
+
+.in-block {
+  display: inline-block;
 }
 
 .flx {
@@ -286,6 +310,10 @@ button:hover {
 .mrg-tb-15p {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.pad-5p {
+  padding: 5px;
 }
 
 .pad-8p {

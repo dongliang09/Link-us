@@ -13,6 +13,7 @@ function PostCard({post, user, relatedComments}) {
 
   return (
     <div className="bg-white pad-15p borderR-10p boxS-0-0-2-gray mrg-tb-15p">
+
       <div className="flx-jc-sb">
         <div>
           <i className="fas fa-user-circle fontS-300rem color-second-blue"></i> {user?user.firstName:null} {user?user.lastName:null}
@@ -28,9 +29,13 @@ function PostCard({post, user, relatedComments}) {
               customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover"/>
         </div> : null}
       </div>
-      <p className="fontS-115rem">{post.content}</p>
+
+      <p className="fontS-115rem pad-l-13p">{post.content}</p>
+
       <div className="color-main-gray flx-jc-fe">{relatedComments.length} comments</div>
+
       <hr className="color-main-gray"/>
+
       <div className="flx-jc-sa">
         <button onClick={()=>alert("feature coming soon")}
           className="color-main-gray bg-white border-0p color-main-blue-hover" >
@@ -43,13 +48,18 @@ function PostCard({post, user, relatedComments}) {
       </div>
 
       { seeComment && <div>
+
         <div  className="border-green mrg-15p">
           <div>
             {sessionUser?.firstName}
           </div>
           <CommentInput postId={post.id} formType="create"/>
         </div>
-        {relatedComments.map(comment => <CommentCard comment={comment} postOwner={user[post.user_id]} user={allUsers[comment.user_id]} key={comment.id} />)}
+
+        {relatedComments.map(comment =>
+          <CommentCard comment={comment} postOwner={allUsers[post.user_id]}
+            user={allUsers[comment.user_id]} key={comment.id} />)}
+
       </div>}
 
     </div>

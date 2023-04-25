@@ -6,8 +6,7 @@ import { thunkGetAllUsers } from "../../store/user";
 import { thunkGetAllComments } from "../../store/comment"
 import PostCard from "./postCard";
 import PostInputSelection from "./postInputSelection";
-import CommentCard from "./commentCard";
-import CommentInput from "./commentInput";
+import FeedRightPanel from "./feedRightPanel";
 
 function FeedPage() {
   const dispatch = useDispatch();
@@ -15,9 +14,6 @@ function FeedPage() {
   const allPosts = Object.values(useSelector((state) => state.posts.allPosts)).sort((a,b)=>( new Date(b.created_at) - new Date(a.created_at)));
   const allComments = Object.values(useSelector((state) => state.comments.allComments));
   const allUsers = useSelector((state) => state.users.allUsers);
-  const history = useHistory();
-
-  console.log(allComments)
 
   useEffect( ()=> {
     dispatch(thunkGetAllPosts())
@@ -45,16 +41,7 @@ function FeedPage() {
           }
           )}
         </div>
-        <div>
-          <h3>Link-us News</h3>
-          <h4>Coming Features</h4>
-          <ul>
-            <li>Education</li>
-            <li>Skills</li>
-            <li>Following</li>
-            <li>Search</li>
-          </ul>
-        </div>
+        <FeedRightPanel />
       </div>
     </div>
   )

@@ -28,15 +28,20 @@ function PostInputPlain({formType, post}) {
   },[])
 
   return (
-    <div>
-      <div>
+    <div className="pad-15p">
+      <div className="flx-jc-sb">
         {sessionUser.firstName}
-        <button onClick={()=>closeModal()}><i className="fas fa-times"></i></button>
+        <button onClick={()=>closeModal()} className="fontS-115rem bg-gray-hover border-0p borderR-50per bg-white">
+          <i className="fas fa-times"></i>
+        </button>
       </div>
-      <form onSubmit={(e)=>checkInputError(e)}>
+      <form onSubmit={(e)=>checkInputError(e)} className="flx-col">
         <input value={postInput} onChange={(e)=>setPostInput(e.target.value)} required
-          placeholder="What is your thought now?"/>
-        {formType === "create" ? <button>Post</button> : <button>Save</button>}
+          placeholder="What is your thought now?"
+          className="mrg-tb-15p fontS-115rem"/>
+        <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
+          {formType === "create" ? "Post" : "Save"}
+        </button>
       </form>
     </div>
   )
