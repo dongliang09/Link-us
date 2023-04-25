@@ -10,6 +10,7 @@ function FeedRightPanel() {
         <li>Skills</li>
         <li>Following</li>
         <li>Search</li>
+        <li>Like</li>
       </ul>
     </div>
   )
