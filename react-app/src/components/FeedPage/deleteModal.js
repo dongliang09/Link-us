@@ -16,15 +16,17 @@ function DeleteModal({postId, commentId}) {
   }
 
   return (
-    <div>
+    <div className="pad-15p">
       <h1>Delete {postId ?  "Post" : "Comment"}?</h1>
       <p>Are you sure you want to permanently remove this {postId ?  "post" : "comment"}?</p>
       <p>{postId ?  "All likes and replies" : "All likes"} will be removed.</p>
       <div>
-        <button onClick={()=>{handleDelete(postId, commentId)}}>
+        <button onClick={()=>{handleDelete(postId, commentId)}}
+          className = "width-fit pad-10p border-0p borderR-15p bg-main-blue bg-deep-blue-hover color-white">
           Delete
         </button>
-        <button onClick={()=>closeModal()}>Cancel</button>
+        <button onClick={()=>closeModal()}
+          className="width-fit pad-10p border-0p borderR-15p mrg-l-10p">Cancel</button>
       </div>
     </div>
   )

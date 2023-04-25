@@ -11,6 +11,7 @@ function CommentInput({ postId, comment, formType, setEdit}) {
     e.preventDefault();
     if (formType === "create") {
       await dispatch(thunkCreateNewComment(postId, {content:commentInput}))
+      setCommentInput("")
     } else {
       await dispatch(thunkUpdateComment(comment.id, {content:commentInput}))
       setEdit(false)
@@ -24,13 +25,19 @@ function CommentInput({ postId, comment, formType, setEdit}) {
   },[])
 
   return (
-    <div className="">
+    <div className="mrg-10p">
       <form onSubmit={(e)=>checkInputError(e)}>
         <input value={commentInput} onChange={(e)=>setCommentInput(e.target.value)} required
-          placeholder="Add a comment ..."/>
-        {commentInput.length > 0 && <button> {formType === "create" ? "Post" : "Save"} </button>}
+          placeholder="Add a comment ..."
+          className="fontS-115rem borderR-15p pad-tb-5p pad-lr-10p"/>
+        {commentInput.length > 0 && <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue bg-deep-blue-hover color-white mrg-l-10p">
+          {formType === "create" ? "Post" : "Save"}
+        </button>}
+        {formType === "edit" && <button type="button" onClick={()=>setEdit(false)}
+          className="width-fit pad-10p border-main-gray borderR-15p mrg-l-10p">
+          Cancel
+        </button>}
       </form>
-      {formType === "edit" && <button onClick={()=>setEdit(false)}>Cancel</button>}
     </div>
   )
 }
