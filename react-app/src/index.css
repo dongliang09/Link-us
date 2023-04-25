@@ -4,6 +4,7 @@
   --deep-blue: #004182;
   --main-gray: #666666;
   --bg-gray: #f3f2f0;
+  --home-brown: #8f5849;
 }
 
 /*============ html tag =============*/
@@ -145,6 +146,10 @@ button:hover {
   color: var(--main-gray);
 }
 
+.color-home-brown {
+  color: var(--home-brown);
+}
+
 .cursor-pt-hover:hover {
   cursor: pointer;
 }
@@ -243,14 +248,19 @@ button:hover {
   gap: 2rem;
 }
 
-.grid-1-5-1 {
+.grid-1-1 {
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .grid-1-9 {
   display: grid;
   grid-template-columns: 1fr 9fr;
+}
+
+.grid-1-5-1 {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
 }
 
 .hgt-135rem {
@@ -279,6 +289,11 @@ button:hover {
 
 .mrg-20p {
   margin: 20px;
+}
+
+.mrg-tb-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .mrg-lr-auto {
@@ -423,6 +438,10 @@ button:hover {
 
 .width-max-450p {
   max-width: 450px;
+}
+
+.width-max-550p {
+  max-width: 550px;
 }
 
 .width-max-700p {
