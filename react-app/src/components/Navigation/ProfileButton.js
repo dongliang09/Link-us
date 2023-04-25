@@ -47,29 +47,40 @@ function ProfileButton({ user }) {
     history.push(`/manage`);
   }
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "pos-abs bg-white pad-15p li-none boxS-0-0-2-gray borderR-5p" + (showMenu ? "" : " dis-none");
   const closeMenu = () => setShowMenu(false);
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} className="border-0p bg-white fontS-175rem color-main-blue-hover">
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <ul className={ulClassName} ref={ulRef} >
           <>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={viewProfile}>View Profile</button>
+              <button onClick={viewProfile}
+                className="bg-white color-main-blue fontW-600 border-second-blue borderR-15p pad-lr-150rem">
+                  View Profile
+              </button>
             </li>
             <li>
               <div>
-                <p>Manage</p>
-                <button onClick={managePosts}>Posts</button>
+                <hr/>
+                <div>Manage</div>
+                <button onClick={managePosts} className="border-0p bg-white color-main-blue-hover fontW-600">
+                  Posts
+                </button>
               </div>
             </li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <div>
+                <hr />
+                <button onClick={handleLogout} className="border-0p bg-white color-main-blue-hover fontW-600">
+                  Log Out
+                </button>
+              </div>
             </li>
           </>
       </ul>

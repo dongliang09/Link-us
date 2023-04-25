@@ -37,6 +37,10 @@ button:hover {
   background-color: var(--main-blue);
 }
 
+.bg-second-blue {
+  background-color: var(--second-blue);
+}
+
 .bg-main-gray {
   background-color: var(--main-gray);
 }
@@ -147,6 +151,10 @@ button:hover {
 
 .in-block {
   display: inline-block;
+}
+
+.dis-none {
+  display: none;
 }
 
 .flx {

@@ -5,15 +5,15 @@ from sqlalchemy.sql import text
 def seed_posts():
   #first set
   hi = Post(content="Hello World", user_id=1)
-  whatisup = Post(content="What's up", user_id=1)
-  explore = Post(content="Everything is new to me.Let me explore this website a bit more", user_id=1)
+  whatisup = Post(content="What's up", user_id=3)
+  explore = Post(content="Everything is new to me.Let me explore this website a bit more", user_id=3)
   nice_weather = Post(content="Today is a nice weather.", user_id=1)
 
   first_post = [hi, whatisup, explore, nice_weather]
 
   #second set
-  type_text = Post(content="What is this input box?", user_id = 1)
-  press_button = Post(content="What will this button do? What happen if I press on it?", user_id = 1)
+  type_text = Post(content="What is this input box?", user_id = 3)
+  press_button = Post(content="What will this button do? What happen if I press on it?", user_id = 3)
 
   testing = [type_text, press_button]
 

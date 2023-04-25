@@ -22,8 +22,8 @@ def username_exists(form, field):
 def is_email(form, field):
     # Checking if email is valid
     email = field.data
-    if "@" not in email:
-        raise ValidationError('Please enter a valid email.')
+    if "@" not in email or email.count("@") != 1 :
+        raise ValidationError('Please enter a valid email. It must exactly one @ sign.')
 
 def password_length(form, field):
     # Checking the length of password
