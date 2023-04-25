@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -12,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className={navFlex + "width-max-1300p mrg-lr-auto gap-15p"}>
 			<li className='li-none'>
-				<NavLink exact to="/">Link-us</NavLink>
+				<NavLink exact to="/" className="fontS-125rem pad-15p">Link-us</NavLink>
 			</li>
 			{isLoaded && !sessionUser && (
 				<li className='li-none'>
@@ -25,7 +24,13 @@ function Navigation({ isLoaded }){
 			{isLoaded && sessionUser && (
 				<li className='li-none flx-jc-sb width-max-1000p width-1100p'>
 						<div>
-							<div>search bar</div>
+							<div className='bg-gray pad-5p borderR-10p'>
+								<form >
+									<i className="fas fa-search pad-l-5p"></i>
+									<input placeholder='Search coming soon'
+										className='bg-gray border-0p'/>
+								</form>
+							</div>
 						</div>
 						<div>
 							<ProfileButton user={sessionUser} />
