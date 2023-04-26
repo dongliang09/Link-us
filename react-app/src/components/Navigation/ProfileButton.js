@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className="border-0p bg-white fontS-175rem color-main-blue-hover">
+      <button onClick={openMenu} className="mrg-tb-auto border-0p bg-white fontS-175rem color-main-blue-hover">
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef} >

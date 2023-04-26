@@ -18,8 +18,11 @@ function PostCard({post, user, relatedComments}) {
     <div className="bg-white pad-15p borderR-10p boxS-0-0-2-gray mrg-tb-15p">
 
       <div className="flx-jc-sb">
-        <div>
-          <i className={profileColor}></i> {user?user.firstName:null} {user?user.lastName:null}
+        <div className="flx gap-15p">
+          <i className={profileColor}></i>
+          <div className="mrg-tb-auto">
+            {user?user.firstName:null} {user?user.lastName:null}
+          </div>
         </div>
         {sessionUser && user && sessionUser.id === user.id ? <div className="flx gap-15p">
             <OpenModalButton
@@ -33,7 +36,9 @@ function PostCard({post, user, relatedComments}) {
         </div> : null}
       </div>
 
-      <p className="fontS-115rem pad-l-13p">{post.content}</p>
+      <p className="fontS-115rem pad-l-13p width-max-700p overFW-bw hgt-max-200p overF-auto">
+        {post.content}
+      </p>
 
       <div className="color-main-gray flx-jc-fe">{relatedComments.length} comments</div>
 
