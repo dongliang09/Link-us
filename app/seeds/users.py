@@ -6,14 +6,14 @@ from sqlalchemy.sql import text
 def seed_users():
     demo = User(
         firstName='Demo', lastName='User', email='demo@aa.io', password='password')
-    annie = User(
-        firstName='Annie', lastName='Li', email='marnie@aa.io', password='password')
-    anna = User(
-        firstName='Anna', lastName='Lu', email='bobbie@aa.io', password='password')
+    abel = User(
+        firstName='Abel', lastName='Wang', email='abel@aa.io', password='password')
+    enoch = User(
+        firstName='Enoch', lastName='Lu', email='enoch@aa.io', password='password')
 
     db.session.add(demo)
-    db.session.add(annie)
-    db.session.add(anna)
+    db.session.add(abel)
+    db.session.add(enoch)
     db.session.commit()
 
 
