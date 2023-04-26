@@ -263,6 +263,14 @@ button:hover {
   grid-template-columns: 1fr 5fr 1fr;
 }
 
+.hgt-max-100p {
+  max-height: 100px;
+}
+
+.hgt-max-200p {
+  max-height: 200px;
+}
+
 .hgt-135rem {
   height: 1.35rem;
 }
@@ -347,6 +355,14 @@ button:hover {
 .mrg-tb-15p {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.overF-auto {
+  overflow: auto;
+}
+
+.overFW-bw {
+  overflow-wrap: break-word ;
 }
 
 .pad-5p {

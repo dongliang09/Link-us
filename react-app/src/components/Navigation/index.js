@@ -10,7 +10,7 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul className={navFlex + "width-max-1300p mrg-lr-auto gap-15p"}>
-			<li className='li-none'>
+			<li className='li-none mrg-tb-auto'>
 				<NavLink exact to="/" className="fontS-125rem pad-15p">Link-us</NavLink>
 			</li>
 			{isLoaded && !sessionUser && (
@@ -23,14 +23,13 @@ function Navigation({ isLoaded }){
 			)}
 			{isLoaded && sessionUser && (
 				<li className='li-none flx-jc-sb width-max-1000p width-1100p'>
-						<div>
-							<div className='bg-gray pad-5p borderR-10p'>
-								<form >
-									<i className="fas fa-search pad-l-5p"></i>
-									<input placeholder='Search coming soon'
-										className='bg-gray border-0p'/>
-								</form>
-							</div>
+
+						<div className='bg-gray mrg-tb-auto borderR-10p pad-5p'>
+							<form >
+								<i className="fas fa-search pad-l-5p"></i>
+								<input placeholder='Search coming soon'
+									className='bg-gray border-0p'/>
+							</form>
 						</div>
 						<div>
 							<ProfileButton user={sessionUser} />

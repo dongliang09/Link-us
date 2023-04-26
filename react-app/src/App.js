@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import FeedPage from "./components/FeedPage";
 import HomePage from "./components/HomePage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function App() {
             <div><h1>Manage, coming soon</h1></div>
           </Route>
           <Route path="/user/:userId">
-            <div><h1>Profile, coming soon</h1></div>
+            <ProfilePage />
           </Route>
         </Switch>
       )}

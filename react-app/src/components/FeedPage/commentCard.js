@@ -31,7 +31,7 @@ function CommentCard({ comment, user, postOwner }) {
           </div> : null}
         </div>
         {editComment ? <CommentInput setEdit={setEditComment} comment={comment} formType="edit" />
-          : <p className="fontS-115rem">{comment.content}</p>}
+          : <p className="fontS-115rem width-max-550p overFW-bw hgt-max-100p overF-auto">{comment.content}</p>}
       </div>
     </div>
   )
