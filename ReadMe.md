@@ -11,7 +11,8 @@ You can create/update/delete posts and comments that belong to you.
 - Database: Development: SQLite3
 
 # Screenshot of Project
-
+![Sign up Page](./website-screenshot/readMe-ss2.PNG)
+![Feed Page](./website-screenshot/readMe-ss1.PNG)
 
 # Set up
 1. Clone this repository

@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className={navFlex + "width-max-1300p mrg-lr-auto gap-15p"}>
 			<li className='li-none mrg-tb-auto'>
-				<NavLink exact to="/" className="fontS-125rem pad-15p">Link-us</NavLink>
+				<NavLink exact to="/" className="fontS-125rem pad-15p fontF-Bruno">Link<span className='bg-main-blue borderR-5p color-white pad-lr-3p'>Yet</span></NavLink>
 			</li>
 			{isLoaded && !sessionUser && (
 				<li className='li-none'>

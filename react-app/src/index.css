@@ -26,6 +26,10 @@ button:hover {
 }
 
 /*============= className ============*/
+.bg-black {
+  background-color: black;
+}
+
 .bg-white {
   background-color: white;
 }
@@ -118,6 +122,10 @@ button:hover {
   box-shadow: 0px 0px 2px var(--main-gray)
 }
 
+.color-black-hover:hover {
+  color: black;
+}
+
 .color-red {
   color: red;
 }
@@ -206,6 +214,10 @@ button:hover {
 
 .flx-wrap {
   flex-wrap: wrap;
+}
+
+.fontF-Bruno {
+  font-family: 'Bruno Ace SC', cursive;
 }
 
 .fontS-115rem {
@@ -304,44 +316,6 @@ button:hover {
   margin-bottom: auto;
 }
 
-.mrg-lr-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.mrg-lr-15p {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.mrg-l-10p {
-  margin-left: 10px;
-}
-
-.mrg-l-7rem {
-  margin-left: 7rem;
-}
-
-.mrg-r-3rem {
-  margin-right: 3rem;
-}
-
-.mrg-r-8p {
-  margin-right: 8px;
-}
-
-.mrg-t-0p {
-  margin-top: 0px;
-}
-
-.mrg-b-5p {
-  margin-bottom: 5px;
-}
-
-.mrg-b-15p {
-  margin-bottom: 15px;
-}
-
 .mrg-tb-5p {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -355,6 +329,48 @@ button:hover {
 .mrg-tb-15p {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.mrg-lr-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mrg-lr-15p {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.mrg-t-0p {
+  margin-top: 0px;
+}
+
+.mrg-t-100p {
+  margin-top: 80px;
+}
+
+.mrg-r-3rem {
+  margin-right: 3rem;
+}
+
+.mrg-r-8p {
+  margin-right: 8px;
+}
+
+.mrg-b-5p {
+  margin-bottom: 5px;
+}
+
+.mrg-b-15p {
+  margin-bottom: 15px;
+}
+
+.mrg-l-10p {
+  margin-left: 10px;
+}
+
+.mrg-l-7rem {
+  margin-left: 7rem;
 }
 
 .overF-auto {
@@ -379,6 +395,11 @@ button:hover {
 
 .pad-15p {
   padding: 15px;
+}
+
+.pad-lr-3p {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .pad-lr-10p {
@@ -442,6 +463,10 @@ button:hover {
 
 .pos-abs {
   position: absolute;
+}
+
+.bottom-0p {
+  bottom: 0px;
 }
 
 .txt-ali-center {

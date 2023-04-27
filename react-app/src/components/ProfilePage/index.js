@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from 'react-router-dom'
 
 function ProfilePage() {
+  const { userId } = useParams()
+
   return (
     <div>
       <h1>ProfilePage, under construction</h1>

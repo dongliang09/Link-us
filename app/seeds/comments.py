@@ -9,14 +9,20 @@ def seed_comments():
   to_hello_world = [hi, goodnight]
 
   # second set
-  place_suggestion = Comment(content="I heared kite island has a good view", post_id =8, user_id= 2)
-  time_suggestion = Comment(content="How about Sunday afternoon?", post_id=8, user_id= 3)
+  work_flow = Comment(post_id =2, user_id= 2, content="Set up your model, then backend routes, then frontend")
+  udemy = Comment(post_id=4, user_id= 3,content="Udemy")
 
-  meetup = [place_suggestion, time_suggestion]
+  advice = [work_flow, udemy]
+
+  set_up_discord = Comment(post_id =5, user_id= 2, content="I can set up a discord channel for meetings.")
+  user3_join = Comment(post_id=5, user_id=3, content="I am in.")
+
+  meeting_circle =[set_up_discord, user3_join]
 
   # add all data
-  [db.session.add(post) for post in to_hello_world]
-  [db.session.add(post) for post in meetup]
+  [db.session.add(comment) for comment in to_hello_world]
+  [db.session.add(comment) for comment in advice]
+  [db.session.add(comment) for comment in meeting_circle]
   db.session.commit()
 
 def undo_comments():
