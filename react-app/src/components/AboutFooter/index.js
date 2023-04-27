@@ -9,11 +9,11 @@ function AboutFooter() {
       </div>
       <div className="flx gap-15p">
         <div className="">Dongliang Li</div>
-        <a href="https://github.com/dongliang09" target="_blank"
+        <a href="https://github.com/dongliang09" target="_blank" rel="noopener noreferrer"
           className="color-main-gray color-black-hover">
           <i className="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/dongliang-li-a9ab038a/" target="_blank"
+        <a href="https://www.linkedin.com/in/dongliang-li-a9ab038a/" target="_blank" rel="noopener noreferrer"
           className="color-main-gray color-main-blue-hover" >
           <i className="fab fa-linkedin"></i>
         </a>

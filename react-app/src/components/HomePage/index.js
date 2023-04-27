@@ -17,9 +17,13 @@ function HomePage() {
           <Link to="/signup" className="bg-main-blue bg-deep-blue-hover color-white fontS-125rem fontW-600 pad-tb-13p pad-lr-150rem mrg-tb-10p border-0p borderR-20p">
             Sign up now
           </Link>
+          <h1 className="fontS-300rem color-home-brown">Link your excellent team</h1>
+          <Link to="/login" className="bg-main-blue bg-deep-blue-hover color-white fontS-125rem fontW-600 pad-tb-13p pad-lr-150rem mrg-tb-10p border-0p borderR-20p">
+            Login now
+          </Link>
         </div>
         <div className="width-max-700p">
-          <img src={imgUrl} className="width-max-700p"/>
+          <img src={imgUrl} alt="sitting in office" className="width-max-700p"/>
         </div>
       </div>
       <AboutFooter />

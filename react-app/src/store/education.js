@@ -2,7 +2,7 @@
 const SET_ALL_EDUCATIONS = 'educations/SETALLEDUCATIONS';
 
 // ========== Dispatch Action ============
-const setAllComments = (educations) => ({
+const setAllEductions = (educations) => ({
 	type: SET_ALL_EDUCATIONS,
   payload: educations
 });
@@ -12,20 +12,20 @@ export const thunkGetAllEducations = () =>  async (dispatch) => {
   const response = await fetch('/api/educations')
   if (response.ok) {
     const data = await response.json()
-    dispatch(setAllComments(data.educations))
+    dispatch(setAllEductions(data.educations))
   }
 }
 
 
 // =========== Reducer =================
-const initialState = { allEducation: {} };
+const initialState = { allEducations: {} };
 
 const educationReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case SET_ALL_EDUCATIONS:
       newState = {...state};
-      newState.allComments = normalizeData(action.payload)
+      newState.allEducations= normalizeData(action.payload)
       return newState
     default:
       return state
