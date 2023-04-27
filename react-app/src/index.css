@@ -154,6 +154,10 @@ button:hover {
   color: var(--main-gray);
 }
 
+.color-bg-gray {
+  color: var(--bg-gray);
+}
+
 .color-home-brown {
   color: var(--home-brown);
 }
@@ -220,12 +224,20 @@ button:hover {
   font-family: 'Bruno Ace SC', cursive;
 }
 
+.fontS-init {
+  font-size: initial;
+}
+
 .fontS-115rem {
   font-size: 1.15rem;
 }
 
 .fontS-125rem {
   font-size: 1.25rem;
+}
+
+.fontS-135rem {
+  font-size: 1.35rem;
 }
 
 .fontS-175rem {
@@ -250,6 +262,10 @@ button:hover {
 
 .fontW-600 {
   font-weight: 600;
+}
+
+.gap-5p {
+  gap: 5px;
 }
 
 .gap-15p {
@@ -283,8 +299,16 @@ button:hover {
   max-height: 200px;
 }
 
+.hgt-2p {
+  height: 2px;
+}
+
 .hgt-135rem {
   height: 1.35rem;
+}
+
+.hgt-250rem {
+  height: 2.5rem;
 }
 
 .hgt-fit {
@@ -397,29 +421,6 @@ button:hover {
   padding: 15px;
 }
 
-.pad-lr-3p {
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
-.pad-lr-10p {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.pad-lr-150rem {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.pad-t-150rem {
-  padding-top: 1.5rem;
-}
-
-.pad-t-4rem {
-  padding-top: 4rem;
-}
-
 .pad-tb-5p {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -445,16 +446,48 @@ button:hover {
   padding-bottom: 25px;
 }
 
+.pad-lr-3p {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.pad-lr-10p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.pad-lr-15p {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pad-lr-150rem {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.pad-t-13p {
+  padding-top: 13px
+}
+
+.pad-t-150rem {
+  padding-top: 1.5rem;
+}
+
+.pad-t-4rem {
+  padding-top: 4rem;
+}
+
+.pad-b-050rem {
+  padding-bottom: 0.5rem;
+}
+
 .pad-l-5p {
   padding-left: 5px;
 }
 
 .pad-l-13p {
   padding-left: 13px;
-}
-
-.pad-t-13p {
-  padding-top: 13px
 }
 
 .pos-rel {
@@ -471,6 +504,10 @@ button:hover {
 
 .txt-ali-center {
   text-align: center;
+}
+
+.width-max-50p {
+  max-width: 50px;
 }
 
 .width-max-250p {
@@ -507,6 +544,10 @@ button:hover {
 
 .width-1100p {
   width: 1100px;
+}
+
+.width-250rem {
+  width: 2.5rem;
 }
 
 .width-fit {

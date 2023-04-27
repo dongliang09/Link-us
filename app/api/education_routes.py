@@ -15,4 +15,4 @@ def allEducation():
   Query all educations and return them as a list in dictionary value
   """
   educations = Education.query.all()
-  return {"education": [education.to_dict() for education in educations]}
+  return {"educations": [education.to_dict() for education in educations]}

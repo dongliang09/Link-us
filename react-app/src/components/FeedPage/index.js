@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { thunkGetAllPosts } from "../../store/post";
 import { thunkGetAllUsers } from "../../store/user";
 import { thunkGetAllComments } from "../../store/comment"
@@ -11,7 +11,8 @@ import FeedRightPanel from "./feedRightPanel";
 function FeedPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const allPosts = Object.values(useSelector((state) => state.posts.allPosts)).sort((a,b)=>( new Date(b.created_at) - new Date(a.created_at)));
+  const allPosts = Object.values(useSelector((state) => state.posts.allPosts))
+    .sort((a,b)=>( new Date(b.created_at) - new Date(a.created_at)));
   const allComments = Object.values(useSelector((state) => state.comments.allComments));
   const allUsers = useSelector((state) => state.users.allUsers);
 
