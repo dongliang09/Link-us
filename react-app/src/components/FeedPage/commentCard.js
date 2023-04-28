@@ -21,13 +21,13 @@ function CommentCard({ comment, user, postOwner }) {
 
           {sessionUser && user && sessionUser.id === user?.id ? <div className="flx gap-15p">
             <button onClick={()=>setEditComment(!editComment)}
-              className="border-0p color-main-gray bg-white color-main-blue-hover">
+              className="border-0p color-main-gray bg-white color-main-blue-hover borderR-5p">
                 <i className="fas fa-edit"></i> <span>Edit</span>
             </button>
             <OpenModalButton
                 modalComponent={<DeleteModal commentId={comment.id}/>}
                 buttonText={<span><i className="fas fa-trash-alt"></i> Delete </span>}
-                customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover"/>
+                customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover borderR-5p"/>
           </div> : null}
         </div>
         {editComment ? <CommentInput setEdit={setEditComment} comment={comment} formType="edit" />

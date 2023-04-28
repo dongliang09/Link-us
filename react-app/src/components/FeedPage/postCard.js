@@ -57,7 +57,7 @@ function PostCard({post, user, relatedComments}) {
 
       { seeComment && <div>
 
-        <div  className="flx mrg-15p">
+        <div  className="flx mrg-15p grid-1-10">
           <div>
             <i className={profileColor}></i>
           </div>

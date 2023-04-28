@@ -58,9 +58,10 @@ function PostInputPlain({formType, post}) {
       </ul>
 
       <form onSubmit={(e)=>checkInputError(e)} className="flx-col">
-        <input value={postInput} onChange={(e)=>setPostInput(e.target.value)} required
+        <textarea value={postInput} onChange={(e)=>setPostInput(e.target.value)} required
           placeholder="What is your thought now?"
-          className="mrg-tb-15p fontS-115rem"/>
+          cols="40" rows="5"
+          className="mrg-tb-15p fontS-115rem borderR-5p"/>
         <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
           {formType === "create" ? "Post" : "Save"}
         </button>

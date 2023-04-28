@@ -286,6 +286,11 @@ button:hover {
   grid-template-columns: 1fr 9fr;
 }
 
+.grid-1-10 {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+
 .grid-1-5-1 {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
