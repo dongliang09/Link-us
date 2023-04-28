@@ -40,13 +40,13 @@ function CommentInput({ postId, comment, formType, setEdit}) {
   },[commentInput]);
 
   return (
-    <div className="mrg-10p">
+    <div className="mrg-10p ">
 
-      <form onSubmit={(e)=>checkInputError(e)}>
-        <input value={commentInput} onChange={(e)=>setCommentInput(e.target.value)} required
+      <form onSubmit={(e)=>checkInputError(e)} className="flx-col gap-5p">
+        <textarea value={commentInput} onChange={(e)=>setCommentInput(e.target.value)} required
           placeholder="Add a comment ..."
-          className="fontS-115rem borderR-15p pad-tb-5p pad-lr-10p"/>
-        {commentInput.length > 0 && <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue bg-deep-blue-hover color-white mrg-l-10p">
+          className="fontS-115rem borderR-10p pad-tb-5p pad-lr-10p"/>
+        {commentInput.length > 0 && <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue bg-deep-blue-hover color-white ">
           {formType === "create" ? "Post" : "Save"}
         </button>}
         {formType === "edit" && <button type="button" onClick={()=>setEdit(false)}

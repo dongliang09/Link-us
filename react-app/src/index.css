@@ -286,6 +286,11 @@ button:hover {
   grid-template-columns: 1fr 9fr;
 }
 
+.grid-1-10 {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+
 .grid-1-5-1 {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
@@ -514,6 +519,10 @@ button:hover {
   max-width: 250px;
 }
 
+.width-max-300p {
+  max-width: 300px;
+}
+
 .width-max-450p {
   max-width: 450px;
 }
@@ -548,6 +557,10 @@ button:hover {
 
 .width-250rem {
   width: 2.5rem;
+}
+
+.width-2000rem {
+  width: 20rem;
 }
 
 .width-fit {
