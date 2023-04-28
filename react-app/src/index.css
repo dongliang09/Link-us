@@ -514,6 +514,10 @@ button:hover {
   max-width: 250px;
 }
 
+.width-max-300p {
+  max-width: 300px;
+}
+
 .width-max-450p {
   max-width: 450px;
 }
@@ -548,6 +552,10 @@ button:hover {
 
 .width-250rem {
   width: 2.5rem;
+}
+
+.width-2000rem {
+  width: 20rem;
 }
 
 .width-fit {
