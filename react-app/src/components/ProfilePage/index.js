@@ -32,7 +32,7 @@ function ProfilePage() {
             <span className="fontS-135rem">Education</span>
             <div>
               {Number(userId) === sesssionUser.id && <OpenModalButton
-                modalComponent={<AddEducationModal />}
+                modalComponent={<AddEducationModal formType="create"/>}
                 buttonText={<i className="fas fa-plus"></i>}
                 customizeStyle="bg-white border-0p fontS-115rem borderR-50per bg-gray-hover width-250rem hgt-250rem"
               />}

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-
+import { thunkCreateNewEducation } from "../../store/education";
 import { useModal } from "../../context/Modal";
 
 function AddEducationModal({ formType }) {
   const dispatch = useDispatch();
   const [school, setSchool] = useState("");
   const [major, setMajor] = useState("");
+  const [city, setCity] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState({});
   const { closeModal } = useModal();
@@ -15,9 +16,10 @@ function AddEducationModal({ formType }) {
     e.preventDefault();
     if (Object.values(error).length === 0) {
       if (formType === "create") {
-        await dispatch('create')
+        await dispatch(thunkCreateNewEducation({major, school, city}))
         setSchool("");
         setMajor("");
+        setCity("");
       } else {
         await dispatch('update')
       }
@@ -32,11 +34,13 @@ function AddEducationModal({ formType }) {
     if (formType === "edit") {
       setSchool("something")
       setMajor()
+      setCity()
     }
     return (() => {
       setError({});
       setSchool("")
       setMajor("")
+      setCity("");
     })
   },[]);
 
@@ -44,7 +48,8 @@ function AddEducationModal({ formType }) {
     let error = {};
     if (school.length > 75) error.school = "School only accepts maximum of 75 characters"
     if (major.length > 75) error.major = "Major only accepts maximum of 75 characters"
-  }, [school, major])
+    if (city.length > 75) error.city = "Cty only accepts maximum of 75 characters"
+  }, [school, major,city])
 
   return (
   <div className="pad-15p">
@@ -68,11 +73,18 @@ function AddEducationModal({ formType }) {
       className="flx-col gap-15p width-2000rem width-max-300p">
       <div className="flx-col gap-5p">
         <label className="color-main-gray">School*</label>
-        <input placeholder="Ex: Boston University" className="fontS-115rem pad-l-5p"/>
+        <input value={school} onChange={(e)=>setSchool(e.target.value)}
+          placeholder="Ex: Boston University" className="fontS-115rem pad-l-5p"/>
+      </div>
+      <div className="flx-col gap-5p">
+        <label className="color-main-gray">City*</label>
+        <input value={city} onChange={(e)=>setCity(e.target.value)}
+          placeholder="Ex: Boston" className="fontS-115rem pad-l-5p"/>
       </div>
       <div className="flx-col gap-5p">
         <label className="color-main-gray">Field of Study</label>
-        <input placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
+        <input value={major} onChange={(e)=>setMajor(e.target.value)}
+          placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
       </div>
       <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
         Save
