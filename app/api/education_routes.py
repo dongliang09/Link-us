@@ -40,3 +40,28 @@ def createEducation():
     db.session.commit()
     return new_education.to_dict()
   return {'error': validation_errors_to_error_messages(form.errors)}, 400
+
+#================== update post ==================
+@education_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def updatePost(id):
+  """
+  return edited post if all properties pass validation of post
+  """
+  pass
+
+
+#================== delete post ==================
+@education_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def removeEducation(id):
+  """
+  Delete selected education if found
+  """
+  foundEducation = Education.query.get(id)
+  if foundEducation:
+    db.session.delete(foundEducation)
+    db.session.commit()
+    return {"message":"education deleted"}
+  else:
+    return {'error':"education not found"}, 404

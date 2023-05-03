@@ -5,6 +5,7 @@ import { thunkGetAllUsers } from "../../store/user";
 import { thunkGetAllEducations } from "../../store/education";
 import OpenModalButton from "../OpenModalButton";
 import AddEducationModal from "./addEducationModal";
+import DeleteEducationModal from "./deleteEducationModal";
 import default_education from "./default_education.PNG";
 
 
@@ -39,11 +40,21 @@ function ProfilePage() {
             </div>
           </div>
           {currUserEducations.map((education, idx)=><div key={idx}>
-            <div className="flx gap-15p pad-15p">
-              <div><img src={default_education} alt="default img" className="width-max-50p"/></div>
-              <div>
-                <div>{education.school}</div>
-                <div className="color-main-gray fontS-init">{education.major}</div>
+            <div className="flx flx-jc-sb  pad-15p">
+              <div className="flx gap-15p">
+                <div><img src={default_education} alt="default img" className="width-max-50p"/></div>
+                <div>
+                  <div>{education.school}</div>
+                  <div className="color-main-gray fontS-init">{education.major}</div>
+                </div>
+              </div>
+              <div className="flx">
+                <div>update</div>
+                <div>
+                  <OpenModalButton modalComponent={<DeleteEducationModal educationId={education.id} />}
+                    buttonText={<span><i className="fas fa-trash-alt"></i> Delete </span>}
+                    customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover"/>
+                </div>
               </div>
             </div>
             {idx !== currUserEducations.length - 1 ? <div className="hgt-2p bg-gray"/> : null}

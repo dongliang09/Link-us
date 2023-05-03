@@ -27,6 +27,16 @@ export const thunkCreateNewEducation = (EducationData) =>  async (dispatch) => {
   }
 }
 
+export const thunkDeleteEducation = (educationId) =>  async (dispatch) => {
+  const response = await fetch(`/api/educations/${educationId}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllEducations())
+  }
+}
+
 
 // =========== Reducer =================
 const initialState = { allEducations: {} };
