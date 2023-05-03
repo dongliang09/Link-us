@@ -16,6 +16,39 @@ export const thunkGetAllEducations = () =>  async (dispatch) => {
   }
 }
 
+export const thunkCreateNewEducation = (EducationData) =>  async (dispatch) => {
+  const response = await fetch('/api/educations', {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(EducationData)
+  })
+  if (response.ok) {
+    await dispatch(thunkGetAllEducations())
+  }
+}
+
+export const thunkUpdateEducation = (educationId, EducationData) =>  async (dispatch) => {
+  const response = await fetch(`/api/educations/${educationId}`, {
+    method: 'PUT',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(EducationData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllEducations())
+  }
+}
+
+export const thunkDeleteEducation = (educationId) =>  async (dispatch) => {
+  const response = await fetch(`/api/educations/${educationId}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllEducations())
+  }
+}
+
 
 // =========== Reducer =================
 const initialState = { allEducations: {} };

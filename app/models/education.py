@@ -9,8 +9,8 @@ class Education(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   major = db.Column(db.String(75))
+  degree = db.Column(db.String(75))
   school = db.Column(db.String(75), nullable=False)
-  zip_code = db.Column(db.Integer,nullable=False)
   city = db.Column(db.String(75), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now())
@@ -22,8 +22,8 @@ class Education(db.Model):
     return {
       'id': self.id,
       'major': self.major,
+      'degree': self.degree,
       'school': self.school,
-      'zip_code': self.zip_code,
       'city': self.city,
       'user_id': self.user_id,
       'created_at': self.created_at,

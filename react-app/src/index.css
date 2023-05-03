@@ -316,6 +316,10 @@ button:hover {
   height: 2.5rem;
 }
 
+.hgt-800rem {
+  height: 8rem;
+}
+
 .hgt-fit {
   height: fit-content;
 }
@@ -509,6 +513,10 @@ button:hover {
 
 .txt-ali-center {
   text-align: center;
+}
+
+.txt-decor-underL-hover:hover {
+  text-decoration: underline;
 }
 
 .width-max-50p {

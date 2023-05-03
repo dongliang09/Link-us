@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import PostInputPlain from "./postInputPlain";
@@ -10,6 +11,7 @@ function PostCard({post, user, relatedComments}) {
   const sessionUser = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.users.allUsers);
   const [seeComment, setSeeComment] = useState(false);
+  const history = useHistory();
 
   // dafault profile pic to be light blue for other users, black for current user
   let profileColor = (post.user_id === sessionUser?.id ? "" : "color-second-blue") + " fas fa-user-circle fontS-300rem";
@@ -18,9 +20,9 @@ function PostCard({post, user, relatedComments}) {
     <div className="bg-white pad-15p borderR-10p boxS-0-0-2-gray mrg-tb-15p">
 
       <div className="flx-jc-sb">
-        <div className="flx gap-15p">
+        <div className="flx gap-15p cursor-pt-hover " onClick={()=>history.push(`/user/${post.user_id}`)}>
           <i className={profileColor}></i>
-          <div className="mrg-tb-auto">
+          <div className="mrg-tb-auto txt-decor-underL-hover">
             {user?user.firstName:null} {user?user.lastName:null}
           </div>
         </div>

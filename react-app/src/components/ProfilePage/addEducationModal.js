@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-
+import { thunkCreateNewEducation, thunkUpdateEducation } from "../../store/education";
 import { useModal } from "../../context/Modal";
 
-function AddEducationModal({ formType }) {
+function AddEducationModal({ formType, educationData }) {
   const dispatch = useDispatch();
   const [school, setSchool] = useState("");
-  const [major, setMajor] = useState("");
+  const [city, setCity] = useState("");
+  const [major, setMajor] = useState(null);
+  const [degree, setDegree] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState({});
   const { closeModal } = useModal();
@@ -15,11 +17,9 @@ function AddEducationModal({ formType }) {
     e.preventDefault();
     if (Object.values(error).length === 0) {
       if (formType === "create") {
-        await dispatch('create')
-        setSchool("");
-        setMajor("");
+        await dispatch(thunkCreateNewEducation({major, degree, school, city}))
       } else {
-        await dispatch('update')
+        await dispatch(thunkUpdateEducation(educationData.id, {major, degree, school, city}))
       }
       closeModal()
     } else {
@@ -30,21 +30,27 @@ function AddEducationModal({ formType }) {
   useEffect(()=> {
     // populate info on first render
     if (formType === "edit") {
-      setSchool("something")
-      setMajor()
+      setSchool(educationData.school)
+      setCity(educationData.city)
+      setMajor(educationData.major)
+      setDegree(educationData.degree)
     }
     return (() => {
       setError({});
       setSchool("")
+      setCity("");
       setMajor("")
+      setDegree("")
     })
   },[]);
 
   useEffect(()=> {
     let error = {};
     if (school.length > 75) error.school = "School only accepts maximum of 75 characters"
-    if (major.length > 75) error.major = "Major only accepts maximum of 75 characters"
-  }, [school, major])
+    if (city.length > 75) error.city = "City only accepts maximum of 75 characters"
+    if (major && major.length > 75) error.major = "Major only accepts maximum of 75 characters"
+    if (degree && degree.length > 75) error.degree = "Degree only accepts maximum of 75 characters"
+  }, [school, major,city, degree])
 
   return (
   <div className="pad-15p">
@@ -68,11 +74,23 @@ function AddEducationModal({ formType }) {
       className="flx-col gap-15p width-2000rem width-max-300p">
       <div className="flx-col gap-5p">
         <label className="color-main-gray">School*</label>
-        <input placeholder="Ex: Boston University" className="fontS-115rem pad-l-5p"/>
+        <input value={school} onChange={(e)=>setSchool(e.target.value)} required
+          placeholder="Ex: Boston University" className="fontS-115rem pad-l-5p"/>
+      </div>
+      <div className="flx-col gap-5p">
+        <label className="color-main-gray">City*</label>
+        <input value={city} onChange={(e)=>setCity(e.target.value)} required
+          placeholder="Ex: Boston" className="fontS-115rem pad-l-5p"/>
+      </div>
+      <div className="flx-col gap-5p">
+        <label className="color-main-gray">Degree</label>
+        <input value={degree} onChange={(e)=>setDegree(e.target.value)}
+          placeholder="Ex: Bachelor of Art" className="fontS-115rem pad-l-5p"/>
       </div>
       <div className="flx-col gap-5p">
         <label className="color-main-gray">Field of Study</label>
-        <input placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
+        <input value={major} onChange={(e)=>setMajor(e.target.value)}
+          placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
       </div>
       <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
         Save
