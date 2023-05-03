@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { thunkCreateNewEducation } from "../../store/education";
+import { thunkCreateNewEducation, thunkUpdateEducation } from "../../store/education";
 import { useModal } from "../../context/Modal";
 
-function AddEducationModal({ formType }) {
+function AddEducationModal({ formType, educationData }) {
   const dispatch = useDispatch();
   const [school, setSchool] = useState("");
   const [city, setCity] = useState("");
@@ -19,7 +19,7 @@ function AddEducationModal({ formType }) {
       if (formType === "create") {
         await dispatch(thunkCreateNewEducation({major, degree, school, city}))
       } else {
-        await dispatch('update')
+        await dispatch(thunkUpdateEducation(educationData.id, {major, degree, school, city}))
       }
       closeModal()
     } else {
@@ -30,10 +30,10 @@ function AddEducationModal({ formType }) {
   useEffect(()=> {
     // populate info on first render
     if (formType === "edit") {
-      setSchool("something")
-      setCity("soemthing")
-      setMajor("something")
-      setDegree("soemthing")
+      setSchool(educationData.school)
+      setCity(educationData.city)
+      setMajor(educationData.major)
+      setDegree(educationData.degree)
     }
     return (() => {
       setError({});
@@ -85,7 +85,7 @@ function AddEducationModal({ formType }) {
       <div className="flx-col gap-5p">
         <label className="color-main-gray">Degree</label>
         <input value={degree} onChange={(e)=>setDegree(e.target.value)}
-          placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
+          placeholder="Ex: Bachelor of Art" className="fontS-115rem pad-l-5p"/>
       </div>
       <div className="flx-col gap-5p">
         <label className="color-main-gray">Field of Study</label>

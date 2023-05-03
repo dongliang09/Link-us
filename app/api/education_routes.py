@@ -46,9 +46,23 @@ def createEducation():
 @login_required
 def updatePost(id):
   """
-  return edited post if all properties pass validation of post
+  return edited education if all properties pass validation of education
   """
-  pass
+  form = EducationForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  foundEducation = Education.query.get(id)
+  if foundEducation:
+    if form.validate_on_submit():
+      foundEducation.major = form.data['major']
+      foundEducation.degree = form.data['degree']
+      foundEducation.school = form.data['school']
+      foundEducation.city = form.data['city']
+      foundEducation.updated_at = datetime.now()
+      db.session.commit()
+      return foundEducation.to_dict()
+    return {'error': validation_errors_to_error_messages(form.errors)},400
+  else:
+    return {'error':"post not found"}, 404
 
 
 #================== delete post ==================

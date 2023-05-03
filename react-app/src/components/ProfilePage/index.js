@@ -45,17 +45,22 @@ function ProfilePage() {
                 <div><img src={default_education} alt="default img" className="width-max-50p"/></div>
                 <div>
                   <div>{education.school}</div>
-                  <div className="color-main-gray fontS-init">{education.major}</div>
+                  <div className="color-main-gray fontS-init">in {education.city}</div>
+                  <div className="color-main-gray fontS-init">{education.degree ? education.degree + " -" : ""} {education.major}</div>
                 </div>
               </div>
-              <div className="flx">
-                <div>update</div>
+              {Number(userId) === sesssionUser.id && <div className="flx gap-15p">
+                <div>
+                  <OpenModalButton modalComponent={<AddEducationModal formType="edit" educationData={education}/>}
+                    buttonText={<span><i className="fas fa-edit"></i> Update </span>}
+                    customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover"/>
+                </div>
                 <div>
                   <OpenModalButton modalComponent={<DeleteEducationModal educationId={education.id} />}
                     buttonText={<span><i className="fas fa-trash-alt"></i> Delete </span>}
                     customizeStyle="border-0p color-main-gray bg-white color-main-blue-hover"/>
                 </div>
-              </div>
+              </div>}
             </div>
             {idx !== currUserEducations.length - 1 ? <div className="hgt-2p bg-gray"/> : null}
           </div>)}

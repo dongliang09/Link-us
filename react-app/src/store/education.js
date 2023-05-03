@@ -27,6 +27,18 @@ export const thunkCreateNewEducation = (EducationData) =>  async (dispatch) => {
   }
 }
 
+export const thunkUpdateEducation = (educationId, EducationData) =>  async (dispatch) => {
+  const response = await fetch(`/api/educations/${educationId}`, {
+    method: 'PUT',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(EducationData)
+  })
+  if (response.ok) {
+    // const data = await response.json()
+    await dispatch(thunkGetAllEducations())
+  }
+}
+
 export const thunkDeleteEducation = (educationId) =>  async (dispatch) => {
   const response = await fetch(`/api/educations/${educationId}`, {
     method: 'DELETE',
