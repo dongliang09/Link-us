@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutFooter() {
   return (
-    <div className="flx flx-jc-center fontS-115rem bg-gray width-100per gap-15p pad-tb-25p mrg-t-100p pos-abs bottom-0p">
+    <div className="flx flx-jc-center fontS-115rem bg-gray width-100per gap-15p pad-tb-25p mrg-t-100p">
       <div className="flx gap-15p">
         <div className="flx fontF-Bruno">Link<div className="bg-black color-white borderR-5p pad-lr-3p">Yet</div></div>
         <div>@2023</div>

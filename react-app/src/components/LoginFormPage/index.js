@@ -56,6 +56,7 @@ function LoginFormPage() {
         </form>
         <div>New to Link-us? <Link to="/signup" className="fontW-600 color-main-blue ">Sign up now</Link></div>
       </div>
+      <div className="hgt-800rem"></div>
       <AboutFooter />
     </div>
   );
