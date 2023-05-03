@@ -29,6 +29,7 @@ def createEducation():
   if form.validate_on_submit():
     new_education = Education(
       major = form.data['major'],
+      degree = form.data['degree'],
       school = form.data['school'],
       city = form.data['city'],
       user_id = current_user.id,

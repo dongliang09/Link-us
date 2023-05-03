@@ -9,6 +9,7 @@ class Education(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   major = db.Column(db.String(75))
+  degree = db.Column(db.String(75))
   school = db.Column(db.String(75), nullable=False)
   city = db.Column(db.String(75), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
@@ -21,6 +22,7 @@ class Education(db.Model):
     return {
       'id': self.id,
       'major': self.major,
+      'degree': self.degree,
       'school': self.school,
       'city': self.city,
       'user_id': self.user_id,
