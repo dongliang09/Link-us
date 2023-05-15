@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllUsers } from "../../store/user";
 import { thunkGetAllEducations } from "../../store/education";
@@ -22,6 +22,8 @@ function ProfilePage() {
     dispatch(thunkGetAllEducations());
   },[dispatch])
 
+  if (!sesssionUser) return <Redirect to="/"/>
+
   return (
     <div className="bg-gray pad-t-150rem">
       <div className="flx-col gap-15p width-max-1000p mrg-lr-auto ">
@@ -40,8 +42,13 @@ function ProfilePage() {
             </div>
           </div>
           {currUserEducations.length === 0 ?
-            <div className="pad-15p">This user didn't add any edcuation yet.</div> :
-            currUserEducations.map((education, idx)=><div key={idx}>
+            Number(userId) !== sesssionUser.id ?
+              <div className="pad-15p">This user didn't add any edcuation yet.</div> :
+              <div className="flx-col gap-10p pad-15p color-main-gray">
+                <div>You didn't add any education yet.</div>
+                <div>Click the + sign on the right to add your first education</div>
+              </div>
+            : currUserEducations.map((education, idx)=><div key={idx}>
               <div className="flx flx-jc-sb  pad-15p">
                 <div className="flx gap-15p">
                   <div><img src={default_education} alt="default img" className="width-max-50p"/></div>

@@ -4,9 +4,13 @@ import { useModal } from "../../context/Modal";
 import { thunkCreateNewPost, thunkUpdatePost } from "../../store/post";
 
 function PostInputPlain({formType, post}) {
+  // formType can be "create" or "edit"
+  // post is only passed down to here when the formType is "edit"
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [postInput, setPostInput] = useState("");
+  const [postImage, setPostImage] = useState("");
   const [error, setError] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const { closeModal } = useModal();
@@ -14,8 +18,11 @@ function PostInputPlain({formType, post}) {
   async function checkInputError(e) {
     e.preventDefault();
     if (Object.values(error).length === 0) {
+      const formData = new FormData();
+      formData.append("content", postInput);
+      formData.append("image", postImage)
       if (formType === "create") {
-        await dispatch(thunkCreateNewPost({content:postInput}))
+        await dispatch(thunkCreateNewPost(formData))
       } else {
         await dispatch(thunkUpdatePost(post.id, {content:postInput}))
       }
@@ -57,11 +64,14 @@ function PostInputPlain({formType, post}) {
         ))}
       </ul>
 
-      <form onSubmit={(e)=>checkInputError(e)} className="flx-col">
+      <form onSubmit={(e)=>checkInputError(e)} className="flx-col"
+        encType="multipart/form-data">
         <textarea value={postInput} onChange={(e)=>setPostInput(e.target.value)} required
           placeholder="What is your thought now?"
           cols="40" rows="5"
           className="mrg-tb-15p fontS-115rem borderR-5p"/>
+        <input type="file" accept="image/*"
+          onChange={(e) => setPostImage(e.target.files[0])}/>
         <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
           {formType === "create" ? "Post" : "Save"}
         </button>
