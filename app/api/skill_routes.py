@@ -38,7 +38,7 @@ def createSkill():
     return new_skill.to_dict()
   return {'error': validation_errors_to_error_messages(form.errors)}, 400
 
-#================== update post ==================
+#================== update skill ==================
 @skill_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def updateSkill(id):
@@ -59,7 +59,7 @@ def updateSkill(id):
     return {'error':"skill not found"}, 404
 
 
-#================== delete post ==================
+#================== delete skill ==================
 @skill_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def removeSkill(id):

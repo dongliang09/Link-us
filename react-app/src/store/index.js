@@ -5,13 +5,15 @@ import postReducer from './post';
 import userReducer from './user';
 import commentReducer from './comment';
 import educationReducer from './education';
+import skillReducer from './skill';
 
 const rootReducer = combineReducers({
   session,
   users: userReducer,
   posts: postReducer,
   comments: commentReducer,
-  educations: educationReducer
+  educations: educationReducer,
+  skills: skillReducer
 });
 
 

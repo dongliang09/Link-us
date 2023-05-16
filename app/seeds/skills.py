@@ -14,8 +14,8 @@ def seed_skills():
   user3_skills = [user3_public_speaking]
 
   # add all data
-  [db.session.add(edu) for edu in user1_skills]
-  [db.session.add(edu) for edu in user3_skills]
+  [db.session.add(skill) for skill in user1_skills]
+  [db.session.add(skill) for skill in user3_skills]
   db.session.commit()
 
 def undo_skills():
