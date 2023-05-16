@@ -16,7 +16,7 @@ export const thunkGetAllSkills = () =>  async (dispatch) => {
   }
 }
 
-export const thunkCreateNewEducation = (skillData) =>  async (dispatch) => {
+export const thunkCreateNewSkill = (skillData) =>  async (dispatch) => {
   const response = await fetch('/api/skills', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
@@ -39,8 +39,8 @@ export const thunkUpdateSkill = (skillId, skillData) =>  async (dispatch) => {
   }
 }
 
-export const thunkDeleteEducation = (skillId) =>  async (dispatch) => {
-  const response = await fetch(`/api/educations/${skillId}`, {
+export const thunkDeleteSkill = (skillId) =>  async (dispatch) => {
+  const response = await fetch(`/api/skills/${skillId}`, {
     method: 'DELETE',
   })
   if (response.ok) {
