@@ -50,6 +50,7 @@ function AddEducationModal({ formType, educationData }) {
     if (city.length > 75) error.city = "City only accepts maximum of 75 characters"
     if (major && major.length > 75) error.major = "Major only accepts maximum of 75 characters"
     if (degree && degree.length > 75) error.degree = "Degree only accepts maximum of 75 characters"
+    setError(error)
   }, [school, major,city, degree])
 
   return (
@@ -64,11 +65,11 @@ function AddEducationModal({ formType, educationData }) {
 
     <p>* indicates required</p>
 
-    <ul>
+    <div className="mrg-b-15p">
       {submitted && Object.values(error).map((error, idx) => (
-        <li key={idx} className='color-red'>{error}</li>
+        <div key={idx} className='color-red'>{error}</div>
       ))}
-    </ul>
+    </div>
 
     <form onSubmit={(e)=>checkEducationInput(e)}
       className="flx-col gap-15p width-2000rem width-max-300p">
