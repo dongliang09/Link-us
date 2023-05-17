@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import FeedPage from "./components/FeedPage";
 import HomePage from "./components/HomePage";
 import ProfilePage from "./components/ProfilePage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/user/:userId">
             <ProfilePage />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
           </Route>
         </Switch>
       )}

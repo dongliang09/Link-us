@@ -7,7 +7,7 @@ from datetime import datetime
 
 education_routes = Blueprint('education', __name__)
 
-#================== get all comments ==================
+#================== get all educations ==================
 @education_routes.route('')
 @login_required
 def allEducation():
@@ -41,10 +41,10 @@ def createEducation():
     return new_education.to_dict()
   return {'error': validation_errors_to_error_messages(form.errors)}, 400
 
-#================== update post ==================
+#================== update education ==================
 @education_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def updatePost(id):
+def updateEducation(id):
   """
   return edited education if all properties pass validation of education
   """
@@ -62,10 +62,10 @@ def updatePost(id):
       return foundEducation.to_dict()
     return {'error': validation_errors_to_error_messages(form.errors)},400
   else:
-    return {'error':"post not found"}, 404
+    return {'error':"education not found"}, 404
 
 
-#================== delete post ==================
+#================== delete education ==================
 @education_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def removeEducation(id):

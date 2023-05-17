@@ -56,7 +56,7 @@ function AddEducationModal({ formType, educationData }) {
   <div className="pad-15p">
 
     <div className="flx flx-jc-sb">
-      <h2>Add Education</h2>
+      <h2>{formType === "create" ? "Add" : "Update"} Education</h2>
       <button  onClick={()=>closeModal()} className="fontS-115rem width-250rem hgt-250rem bg-gray-hover border-0p borderR-50per bg-white mrg-tb-auto">
         <i className="fas fa-times"></i>
       </button>
