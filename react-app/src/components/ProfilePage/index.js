@@ -32,8 +32,12 @@ function ProfilePage() {
   return (
     <div className="bg-gray pad-t-150rem">
       <div className="flx-col gap-15p width-max-1000p mrg-lr-auto ">
+
+
         <div className="bg-white borderR-15p pad-15p">
-          <div className="fontS-175rem pad-15p">{profileUser?.firstName} {profileUser?.lastName}</div>
+          <div className="fontS-175rem pad-15p">
+            {profileUser ? profileUser.firstName+" "+profileUser.lastName : "This user doesn't exist"}
+          </div>
         </div>
 
 
@@ -89,7 +93,7 @@ function ProfilePage() {
             <span className="fontS-135rem mrg-tb-auto">Skill</span>
             <div>
               {Number(userId) === sesssionUser.id && <OpenModalButton
-                modalComponent={<AddSkillModal formType="create"/>}
+                modalComponent={<AddSkillModal formType="create" skillOwned={currUserSkills}/>}
                 buttonText={<i className="fas fa-plus"></i>}
                 customizeStyle="bg-white border-0p fontS-115rem borderR-50per bg-gray-hover width-250rem hgt-250rem"
               />}
