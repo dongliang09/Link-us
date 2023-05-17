@@ -86,20 +86,28 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
     </div>
 
     <form onSubmit={(e)=>checkSkillInput(e)}
-      className="flx-col gap-15p width-2000rem width-max-300p">
+      className="flx-col gap-15p width-2000rem width-max-700p">
       <div className="flx-col gap-5p">
         <label className="color-main-gray">Skill*</label>
         <input value={skill} onChange={(e)=>setSkill(e.target.value)} required
           placeholder="Ex: JavaScript" className="fontS-115rem pad-l-5p"/>
       </div>
       {suggestionBox ?
-        <div>
+        <div className="bg-second-gray pad-15p borderR-10p boxS-0-0-2-gray">
           <div>
-            <span>Suggestion for general skills</span>
-            <button type="button" onClick={()=>setSuggestionBox(false)}>x</button>
-            <div className="flx">
+            <div className="flx-jc-sb ">
+              <span className="mrg-tb-auto">Suggestion for general skills</span>
+              <button type="button" onClick={()=>setSuggestionBox(false)}
+                className="fontS-115rem width-250rem hgt-250rem bg-gray-hover border-0p borderR-50per bg-second-gray mrg-tb-auto">
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            <div className="flx flx-wrap gap-10p">
               {skillSuggestion.map((suggestion,idx) => (
-                <span key={idx}>{suggestion}</span>
+                <button key={idx} type="button" onClick={()=>setSkill(suggestion)}
+                  className="bg-second-gray border-just-gray bg-second-blue-hover borderR-5p pad-5p">
+                  {suggestion}
+                </button>
               ))}
             </div>
           </div>

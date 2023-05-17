@@ -3,7 +3,9 @@
   --second-blue: #83b1e0;
   --deep-blue: #004182;
   --main-gray: #666666;
+  --just-gray: #808080;
   --bg-gray: #f3f2f0;
+  --bg-second-gray: #f9fafb;
   --home-brown: #8f5849;
 }
 
@@ -46,12 +48,20 @@ button:hover {
   background-color: var(--second-blue);
 }
 
+.bg-second-blue-hover:hover {
+  background-color: var(--second-blue);
+}
+
 .bg-main-gray {
   background-color: var(--main-gray);
 }
 
 .bg-gray {
   background-color: var(--bg-gray);
+}
+
+.bg-second-gray {
+  background-color: var(--bg-second-gray);
 }
 
 .bg-gray-hover:hover {
@@ -82,12 +92,24 @@ button:hover {
   border: 1px solid black;
 }
 
+.border-main-blue-hover:hover {
+  border: 2px solid var(--main-blue);
+}
+
 .border-second-blue {
   border: 2px solid var(--second-blue);
 }
 
 .border-main-gray {
   border: 1px solid var(--main-gray);
+}
+
+.border-main-gray-hover:hover {
+  border: 1px solid var(--main-gray);
+}
+
+.border-just-gray {
+  border: 2px solid var(--just-gray);
 }
 
 .borderR-5p {
