@@ -6,6 +6,7 @@ import { thunkGetAllUsers } from "../../store/user";
 import { thunkGetAllComments } from "../../store/comment"
 import PostCard from "./postCard";
 import PostInputSelection from "./postInputSelection";
+import FeedLeftPanel from "./feedLeftPanel";
 import FeedRightPanel from "./feedRightPanel";
 
 function FeedPage() {
@@ -27,7 +28,7 @@ function FeedPage() {
   return (
     <div className="bg-gray pad-t-150rem">
       <div className="grid-1-5-1 gap-15p width-max-1100p mrg-lr-auto">
-        <div className="fontS-400rem"><i className="fas fa-user-circle"></i></div>
+        <FeedLeftPanel currentUser={sessionUser}/>
         <div>
           <div className="mrg-b-15p">
             <PostInputSelection user={sessionUser}/>
