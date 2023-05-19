@@ -69,9 +69,13 @@ function PostInputPlain({formType, post}) {
         <textarea value={postInput} onChange={(e)=>setPostInput(e.target.value)} required
           placeholder="What is your thought now?"
           cols="40" rows="5"
-          className="mrg-tb-15p fontS-115rem borderR-5p"/>
-        <input type="file" accept="image/*"
-          onChange={(e) => setPostImage(e.target.files[0])}/>
+          className="mrg-tb-5p fontS-115rem borderR-5p"/>
+        <label for="postImageUpload" className="cursor-pt-hover mrg-tb-10p pad-lr-10p color-main-blue-hover">
+          <i className="fas fa-camera"></i> Upload your post image
+        </label>
+        <input type="file" accept="image/*" id="postImageUpload"
+          onChange={(e) => setPostImage(e.target.files[0])}
+          className="dis-none"/>
         <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
           {formType === "create" ? "Post" : "Save"}
         </button>

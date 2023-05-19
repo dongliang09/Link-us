@@ -132,6 +132,10 @@ button:hover {
   border-radius: 30px;
 }
 
+.borderR-5per {
+  border-radius: 5%;
+}
+
 .borderR-30per {
   border-radius: 30%;
 }

@@ -21,5 +21,9 @@ that way, everything seems more clear.
 * To implement that, have a general pools of skills,
   filter out the ones user didn't have. When they click on it, it autofills the input box.
 
+## add image upload for post
+* Instead of sending json with dispatch to the backend, we are sending post information along with post image(binary) with built-in JavaScript formData
+* Also need to define AWS upload functions (mostly from offical docs) that will be used in the backend routes
+
 ## easter eggs!
 * I think it would be fun to set up a easter egg hunt on the website

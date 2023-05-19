@@ -42,6 +42,9 @@ function PostCard({post, user, relatedComments}) {
         {post.content}
       </p>
 
+      {post.image ? <img src={post.image} alt="post image"
+        className="width-max-700p pad-lr-15p borderR-5per"/> : null}
+
       <div className="color-main-gray flx-jc-fe">{relatedComments.length} comments</div>
 
       <hr className="color-main-gray"/>

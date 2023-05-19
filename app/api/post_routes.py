@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms import PostForm, CommentForm
 from datetime import datetime
+from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 post_routes = Blueprint('posts', __name__)
 
@@ -40,8 +41,18 @@ def createPost():
   form = PostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
+    #upload to aws
+    image = form.data["image"]
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        return {'errors':[upload]}, 400
+
+    # store to database if we get url back
     new_post = Post(
       content = form.data['content'],
+      image= upload["url"],
       user_id = current_user.id,
       created_at = datetime.now(),
       updated_at = datetime.now()
@@ -81,6 +92,8 @@ def removePost(id):
   Delete selected post if found
   """
   foundPost = Post.query.get(id)
+  if foundPost.image:
+    file_delete = remove_file_from_s3(foundPost.image)
   if foundPost:
     db.session.delete(foundPost)
     db.session.commit()

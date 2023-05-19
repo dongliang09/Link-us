@@ -9,13 +9,13 @@ def seed_comments():
   to_hello_world = [hi, goodnight]
 
   # second set
-  work_flow = Comment(post_id =2, user_id= 2, content="Set up your model, then backend routes, then frontend")
-  udemy = Comment(post_id=4, user_id= 3,content="Udemy")
+  work_flow = Comment(post_id =3, user_id= 2, content="Set up your model, then backend routes, then frontend")
+  udemy = Comment(post_id=5, user_id= 3,content="Udemy")
 
   advice = [work_flow, udemy]
 
-  set_up_discord = Comment(post_id =5, user_id= 2, content="I can set up a discord channel for meetings.")
-  user3_join = Comment(post_id=5, user_id=3, content="I am in.")
+  set_up_discord = Comment(post_id =6, user_id= 2, content="I can set up a discord channel for meetings.")
+  user3_join = Comment(post_id=6, user_id=3, content="I am in.")
 
   meeting_circle =[set_up_discord, user3_join]
 
