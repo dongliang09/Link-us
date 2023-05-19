@@ -5,6 +5,8 @@ import { signUp } from "../../store/session";
 import OpenModalButton from "../OpenModalButton"
 import CookiePolicy from "./cookiePolicy";
 import AboutFooter from "../AboutFooter";
+import { useContext } from "react";
+import { EasterEggContext } from "../../context/EasterEggContext";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  const { easterEggFound, setEasterEggFound } = useContext(EasterEggContext);
 
   if (sessionUser) return <Redirect to="/feed" />;
 
@@ -71,6 +74,10 @@ function SignupFormPage() {
 
           <div className="mrg-tb-5p color-main-gray txt-ali-center">
             By clicking Sign Up, you agree to the <OpenModalButton modalComponent={<CookiePolicy />}
+              onButtonClick={()=>{
+                easterEggFound["signup"] = true
+                setEasterEggFound(easterEggFound)}
+              }
               buttonText="Cookie Policy" buttonTag="span" customizeStyle="fontW-600 color-main-blue cursor-pt-hover" />
           </div>
 

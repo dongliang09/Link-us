@@ -18,5 +18,8 @@ that way, everything seems more clear.
 
 * I like the filtering based on user_id to get related educaitons and skills
 * for adding skill, adding suggestion would be cool.
-* To implement that, perhaps have a general pools of skills,
+* To implement that, have a general pools of skills,
   filter out the ones user didn't have. When they click on it, it autofills the input box.
+
+## easter eggs!
+* I think it would be fun to set up a easter egg hunt on the website

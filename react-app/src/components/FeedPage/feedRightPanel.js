@@ -14,6 +14,7 @@ function FeedRightPanel() {
       <div><i className="far fa-lightbulb"></i> Following</div>
       <div><i className="far fa-lightbulb"></i> Search</div>
       <div><i className="far fa-lightbulb"></i> Like</div>
+      <div><i className="far fa-lightbulb"></i> AWS upload</div>
     </div>
   )
 }

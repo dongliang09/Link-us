@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Redirect, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllUsers } from "../../store/user";
@@ -10,6 +10,8 @@ import DeleteEducationModal from "./deleteEducationModal";
 import default_education from "./default_education.PNG";
 import AddSkillModal from "./addSkillModal";
 import DeleteSkillModal from "./deleteSkillModal";
+import { EasterEggContext } from "../../context/EasterEggContext";
+import ProfileEasterEgg from "./profileEasterEggModal";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -20,6 +22,7 @@ function ProfilePage() {
   const currUserSkills = Object.values(useSelector(state=>state.skills.allSkills))
     .filter((element)=>element.user_id === Number(userId));
   const dispatch = useDispatch();
+  const { easterEggFound, setEasterEggFound } = useContext(EasterEggContext);
 
   useEffect(()=> {
     dispatch(thunkGetAllUsers());
@@ -37,6 +40,15 @@ function ProfilePage() {
         <div className="bg-white borderR-15p pad-15p">
           <div className="fontS-175rem pad-15p">
             {profileUser ? profileUser.firstName+" "+profileUser.lastName : "This user doesn't exist"}
+            {profileUser?.id === 5 ? <OpenModalButton
+                modalComponent={<ProfileEasterEgg />}
+                onButtonClick={()=>{
+                  easterEggFound["profile"] = true
+                  setEasterEggFound(easterEggFound)
+                }}
+                buttonText={<span><i class="fas fa-star"></i> Developer</span>}
+                customizeStyle="mrg-lr-15p mrg-tb-auto bg-white border-0p borderR-5p fontS-115rem bg-main-blue-hover color-white-hover pad-5p"
+              /> : null}
           </div>
         </div>
 
@@ -124,7 +136,7 @@ function ProfilePage() {
                   </div>
                 </div>}
               </div>
-              {idx !== currUserEducations.length - 1 ? <div className="hgt-2p bg-gray"/> : null}
+              {idx !== currUserSkills.length - 1 ? <div className="hgt-2p bg-gray"/> : null}
             </div>)
           }
         </div>
