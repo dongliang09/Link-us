@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 def seed_posts():
   #first set
-  hi = Post(content="Hello World", user_id=1)
+  hi = Post(content="Hello World", user_id=1, image="https://linkyet-april-2023.s3.us-west-2.amazonaws.com/c98ab850ad514f3ea87bb17b284f8d0e.png")
   find_easter_egg = Post(user_id = 5, content="Are you looking for an Easter Egg?")
   get_advice = Post(content="Any advice for programming?", user_id=3)
   joke = Post(user_id=3, content="Post your programming joke here")
