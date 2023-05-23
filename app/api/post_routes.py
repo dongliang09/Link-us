@@ -43,20 +43,29 @@ def createPost():
   if form.validate_on_submit():
     #upload to aws
     image = form.data["image"]
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
+    if (image):
+      image.filename = get_unique_filename(image.filename)
+      upload = upload_file_to_s3(image)
 
-    if "url" not in upload:
-        return {'errors':[upload]}, 400
+      if "url" not in upload:
+          return {'errors':[upload]}, 400
 
-    # store to database if we get url back
-    new_post = Post(
-      content = form.data['content'],
-      image= upload["url"],
-      user_id = current_user.id,
-      created_at = datetime.now(),
-      updated_at = datetime.now()
-    )
+      # store to database if we get url back
+      new_post = Post(
+        content = form.data['content'],
+        image= upload["url"],
+        user_id = current_user.id,
+        created_at = datetime.now(),
+        updated_at = datetime.now()
+      )
+    else:
+      new_post = Post(
+        content = form.data['content'],
+        user_id = current_user.id,
+        created_at = datetime.now(),
+        updated_at = datetime.now()
+      )
+
     db.session.add(new_post)
     db.session.commit()
     return new_post.to_dict()

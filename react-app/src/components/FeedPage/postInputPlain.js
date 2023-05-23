@@ -10,7 +10,7 @@ function PostInputPlain({formType, post}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [postInput, setPostInput] = useState("");
-  const [postImage, setPostImage] = useState("");
+  const [postImage, setPostImage] = useState(null);
   const [error, setError] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const { closeModal } = useModal();
@@ -70,18 +70,18 @@ function PostInputPlain({formType, post}) {
           placeholder="What is your thought now?"
           cols="40" rows="5"
           className="mrg-tb-5p fontS-115rem borderR-5p"/>
-        <div className="flx">
+        {formType === "create" ? <div className="flx">
           <i className="fas fa-camera mrg-tb-auto"></i>
           <label for="postImageUpload" id="postImgUploadLabel" className="cursor-pt-hover mrg-tb-10p pad-lr-10p color-main-blue-hover">
             Upload your post image
           </label>
-        </div>
-        <input type="file" accept="image/*" id="postImageUpload"
+        </div> :null }
+        {formType === "create" ? <input type="file" accept="image/*" id="postImageUpload"
           onChange={(e) => {
             setPostImage(e.target.files[0])
             document.querySelector("#postImgUploadLabel").innerText = e.target.files[0].name
           }}
-          className="dis-none"/>
+          className="dis-none"/> : null}
         <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
           {formType === "create" ? "Post" : "Save"}
         </button>

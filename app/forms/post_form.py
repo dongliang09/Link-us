@@ -12,4 +12,4 @@ def post_length(form, field):
 
 class PostForm(FlaskForm):
     content = StringField('content', validators=[DataRequired(), post_length])
-    image = FileField('image', validators=[FileRequired(), FileAllowed(["png", "jpg", "jpeg", "gif"])])
+    image = FileField('image', validators=[FileAllowed(["png", "jpg", "jpeg", "gif"])])
