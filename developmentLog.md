@@ -24,6 +24,7 @@ that way, everything seems more clear.
 ## add image upload for post
 * Instead of sending json with dispatch to the backend, we are sending post information along with post image(binary) with built-in JavaScript formData
 * Also need to define AWS upload functions (mostly from offical docs) that will be used in the backend routes
+* Since image upload for post is optional, so backend has a conditional (based on if form has image) to determine if we use AWS upload or not
 
 ## easter eggs!
 * I think it would be fun to set up a easter egg hunt on the website

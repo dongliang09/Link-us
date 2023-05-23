@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateNewPost, thunkUpdatePost } from "../../store/post";
+import LoadingCircle from "../reusableComponents/Loading";
 
 function PostInputPlain({formType, post}) {
   // formType can be "create" or "edit"
@@ -10,13 +11,15 @@ function PostInputPlain({formType, post}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [postInput, setPostInput] = useState("");
-  const [postImage, setPostImage] = useState("");
+  const [postImage, setPostImage] = useState(null);
   const [error, setError] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false)
   const { closeModal } = useModal();
 
   async function checkInputError(e) {
     e.preventDefault();
+    setLoading(true)
     if (Object.values(error).length === 0) {
       const formData = new FormData();
       formData.append("content", postInput);
@@ -30,6 +33,7 @@ function PostInputPlain({formType, post}) {
     } else {
       setSubmitted(true)
     }
+    setLoading(false)
   }
 
   useEffect(()=> {
@@ -70,15 +74,24 @@ function PostInputPlain({formType, post}) {
           placeholder="What is your thought now?"
           cols="40" rows="5"
           className="mrg-tb-5p fontS-115rem borderR-5p"/>
-        <label for="postImageUpload" className="cursor-pt-hover mrg-tb-10p pad-lr-10p color-main-blue-hover">
-          <i className="fas fa-camera"></i> Upload your post image
-        </label>
-        <input type="file" accept="image/*" id="postImageUpload"
-          onChange={(e) => setPostImage(e.target.files[0])}
-          className="dis-none"/>
-        <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
-          {formType === "create" ? "Post" : "Save"}
-        </button>
+        {formType === "create" ? <div className="flx">
+          <i className="fas fa-camera mrg-tb-auto"></i>
+          <label for="postImageUpload" id="postImgUploadLabel" className="cursor-pt-hover mrg-tb-10p pad-lr-10p color-main-blue-hover">
+            Upload your post image
+          </label>
+        </div> :null }
+        {formType === "create" ? <input type="file" accept="image/*" id="postImageUpload"
+          onChange={(e) => {
+            setPostImage(e.target.files[0])
+            document.querySelector("#postImgUploadLabel").innerText = e.target.files[0].name
+          }}
+          className="dis-none"/> : null}
+        <div className="flx gap-20p">
+          <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
+            {formType === "create" ? "Post" : "Save"}
+          </button>
+          {loading ? <LoadingCircle /> : null}
+        </div>
       </form>
     </div>
   )
