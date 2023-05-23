@@ -21,15 +21,17 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
 
   // filter out skills the user already have, rest of them(ie. userSkill) will be in suggestion container
   const skillSet = ["Teamwork", "Microsoft Word", "Microsoft Excel", "Public Speaking", "Customer Service",
-                     "Leadership", "Problem Solving", "Attention To Detail", "Time Management", "Critical Thinking"]
+  "Leadership", "Problem Solving", "Attention To Detail", "Time Management", "Critical Thinking"]
   const userSkill = [];
   const skillSuggestion = [];
-  skillOwned.forEach(skill => {
-    userSkill.push(skill.skill)
-  })
-  skillSet.forEach(skill => {
-    if (!userSkill.includes(skill)) skillSuggestion.push(skill)
-  })
+  if (formType === "create") {
+    skillOwned.forEach(skill => {
+      userSkill.push(skill.skill)
+    })
+    skillSet.forEach(skill => {
+      if (!userSkill.includes(skill)) skillSuggestion.push(skill)
+    })
+  }
 
   async function checkSkillInput(e) {
     e.preventDefault();
@@ -96,7 +98,7 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
         <input value={skill} onChange={(e)=>setSkill(e.target.value)} required
           placeholder="Ex: JavaScript" className="fontS-115rem pad-l-5p"/>
       </div>
-      {suggestionBox ?
+      {formType === "create" && suggestionBox ?
         <div className="bg-second-gray pad-15p borderR-10p boxS-0-0-2-gray">
           <div>
             <div className="flx-jc-sb ">

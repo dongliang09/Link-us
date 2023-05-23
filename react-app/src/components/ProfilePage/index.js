@@ -46,7 +46,7 @@ function ProfilePage() {
                   easterEggFound["profile"] = true
                   setEasterEggFound(easterEggFound)
                 }}
-                buttonText={<span><i class="fas fa-star"></i> Developer</span>}
+                buttonText={<span><i className="fas fa-star"></i> Developer</span>}
                 customizeStyle="mrg-lr-15p mrg-tb-auto bg-white border-0p borderR-5p fontS-115rem bg-main-blue-hover color-white-hover pad-5p"
               /> : null}
           </div>
