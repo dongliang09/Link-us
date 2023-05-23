@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateNewPost, thunkUpdatePost } from "../../store/post";
+import LoadingCircle from "../reusableComponents/Loading";
 
 function PostInputPlain({formType, post}) {
   // formType can be "create" or "edit"
@@ -13,10 +14,12 @@ function PostInputPlain({formType, post}) {
   const [postImage, setPostImage] = useState(null);
   const [error, setError] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false)
   const { closeModal } = useModal();
 
   async function checkInputError(e) {
     e.preventDefault();
+    setLoading(true)
     if (Object.values(error).length === 0) {
       const formData = new FormData();
       formData.append("content", postInput);
@@ -30,6 +33,7 @@ function PostInputPlain({formType, post}) {
     } else {
       setSubmitted(true)
     }
+    setLoading(false)
   }
 
   useEffect(()=> {
@@ -82,9 +86,12 @@ function PostInputPlain({formType, post}) {
             document.querySelector("#postImgUploadLabel").innerText = e.target.files[0].name
           }}
           className="dis-none"/> : null}
-        <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
-          {formType === "create" ? "Post" : "Save"}
-        </button>
+        <div className="flx gap-20p">
+          <button className="width-fit pad-tb-10p pad-lr-150rem border-0p borderR-15p bg-main-blue-hover color-white-hover">
+            {formType === "create" ? "Post" : "Save"}
+          </button>
+          {loading ? <LoadingCircle /> : null}
+        </div>
       </form>
     </div>
   )
