@@ -11,8 +11,9 @@ You can create/update/delete posts and comments that belong to you.
 - Database: Development: SQLite3
 
 # Screenshot of Project
-![Sign up Page](./website-screenshot/readMe-ss2.PNG)
-![Feed Page](./website-screenshot/readMe-ss1.PNG)
+![Sign up Page](./website-screenshot/readMe-signup.PNG)
+![Feed Page](./website-screenshot/readMe-feed.PNG)
+![Prolfile Page](./website-screenshot/readMe-profile.PNG)
 
 # Set up
 1. Clone this repository
@@ -53,3 +54,23 @@ You can create/update/delete posts and comments that belong to you.
       ```bash
       npm start
       ```
+
+# Features
+
+### Post
+* Users can create/read/update/delete post. Optional image upload when creating the post.
+### Comment
+* Users can comment on their own post or other people's post.
+### Education
+* Under profile page, users can add their educations (for example, high school, college) with school and city, optional degree and major.
+### SKill
+* Under profile page, users can add their skills. A general suggestion box is also provided.
+### AWS Image Upload
+* Only implement to post at the moment.
+### Easter Eggs
+* Who doesn't like an Easter egg hunt?
+
+# Redux Implement Decision
+* Reducer only have a case of setAll (example: setAllPosts, setAllComments) and default
+* Other thunk dispatch actions (such as, update and delete) will call the thunk set/fetch dispatch action after getting good response
+* I make this decision because contents of website is constantly changing when multiply users creating/deleting posts/comments. Constantly fetching latest acitivties from other users seems like more logical approach.
