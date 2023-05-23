@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateNewSkill, thunkUpdateSkill } from "../../store/skill";
 import { useModal } from "../../context/Modal";
+import LoadingCircle from "../reusableComponents/Loading";
 
 function AddSkillModal({ formType, skillData, skillOwned }) {
   // originally thinking no edit for skill since it might be a short word.
@@ -15,6 +16,7 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState({});
   const [suggestionBox, setSuggestionBox] = useState(true);
+  const [loading, setLoading] = useState(false)
   const { closeModal } = useModal();
 
   // filter out skills the user already have, rest of them(ie. userSkill) will be in suggestion container
@@ -31,6 +33,7 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
 
   async function checkSkillInput(e) {
     e.preventDefault();
+    setLoading(true)
     if (Object.values(error).length === 0) {
       // make every word capitalized
       let words = skill.split(" ");
@@ -48,6 +51,7 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
     } else {
       setSubmitted(true)
     }
+    setLoading(false)
   }
 
   useEffect(()=> {
@@ -113,9 +117,12 @@ function AddSkillModal({ formType, skillData, skillOwned }) {
           </div>
         </div>
         : null}
-      <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
-        Save
-      </button>
+      <div className="flx gap-20p">
+        <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
+          Save
+        </button>
+        {loading ? <LoadingCircle /> : null}
+      </div>
     </form>
   </div>
   )

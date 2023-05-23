@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateNewEducation, thunkUpdateEducation } from "../../store/education";
 import { useModal } from "../../context/Modal";
+import LoadingCircle from "../reusableComponents/Loading";
 
 function AddEducationModal({ formType, educationData }) {
   const dispatch = useDispatch();
@@ -11,10 +12,12 @@ function AddEducationModal({ formType, educationData }) {
   const [degree, setDegree] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false)
   const { closeModal } = useModal();
 
   async function checkEducationInput(e) {
     e.preventDefault();
+    setLoading(true)
     if (Object.values(error).length === 0) {
       if (formType === "create") {
         await dispatch(thunkCreateNewEducation({major, degree, school, city}))
@@ -25,6 +28,7 @@ function AddEducationModal({ formType, educationData }) {
     } else {
       setSubmitted(true)
     }
+    setLoading(false)
   }
 
   useEffect(()=> {
@@ -93,9 +97,12 @@ function AddEducationModal({ formType, educationData }) {
         <input value={major} onChange={(e)=>setMajor(e.target.value)}
           placeholder="Ex: Business" className="fontS-115rem pad-l-5p"/>
       </div>
-      <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
-        Save
-      </button>
+      <div className="flx gap-20p">
+        <button className="bg-main-blue color-white pad-tb-10p fontW-600 bg-deep-blue-hover border-0p borderR-10p">
+          Save
+        </button>
+        {loading ? <LoadingCircle /> : null}
+      </div>
     </form>
   </div>
   )
