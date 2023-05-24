@@ -27,6 +27,15 @@ export const thunkCreateNewLike = (postId, likeData) =>  async (dispatch) => {
   }
 }
 
+export const thunkDeleteLike = (likeId) =>  async (dispatch) => {
+  const response = await fetch(`/api/likes/${likeId}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    await dispatch(thunkGetAllLikes())
+  }
+}
+
 
 
 // =========== Reducer =================

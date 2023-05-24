@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateNewLike } from "../../store/like";
+import { thunkCreateNewLike, thunkDeleteLike } from "../../store/like";
 import OpenModalButton from "../OpenModalButton";
 import PostInputPlain from "./postInputPlain";
 import DeleteModal from "./deleteModal";
@@ -21,18 +21,20 @@ function PostCard({post, user, relatedComments, relatedLikes}) {
   const history = useHistory();
 
   let isCurrentUserLikesThisPost = false;
+  let userLikeInfo;
   for(let i = 0; i < relatedLikes.length; i++) {
-    if (relatedLikes[i].user_id == sessionUser.id) isCurrentUserLikesThisPost = true
+    if (relatedLikes[i].user_id == sessionUser.id) {
+      isCurrentUserLikesThisPost = true;
+      userLikeInfo = relatedLikes[i]
+    }
   }
-  console.log(post.id, isCurrentUserLikesThisPost)
 
   // dafault profile pic to be light blue for other users, black for current user
   let profileColor = (post.user_id === sessionUser?.id ? "" : "color-second-blue") + " fas fa-user-circle fontS-300rem";
 
   async function toggleLike() {
     if (isCurrentUserLikesThisPost) {
-      console.log(post.id, isCurrentUserLikesThisPost, "toggle to off")
-
+      await dispatch(thunkDeleteLike(userLikeInfo.id))
     } else {
       await dispatch(thunkCreateNewLike(post.id, {}))
     }
