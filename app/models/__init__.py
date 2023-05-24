@@ -4,3 +4,4 @@ from .post import Post
 from .comment import Comment
 from .education import Education
 from .skill import Skill
+from .like import Like

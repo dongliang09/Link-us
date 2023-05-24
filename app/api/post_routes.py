@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Post, Comment
+from app.models import db, Post, Comment, Like
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
-from ..forms import PostForm, CommentForm
+from ..forms import PostForm, CommentForm, LikeForm
 from datetime import datetime
 from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
@@ -132,4 +132,26 @@ def createNewComment(id):
     db.session.add(new_comment)
     db.session.commit()
     return new_comment.to_dict()
+  return {'error': validation_errors_to_error_messages(form.errors)}, 400
+
+#================== create new like ==================
+@post_routes.route('/<int:id>/likes', methods=['POST'])
+@login_required
+def createLike():
+  """
+  return new like if all properties pass validation of like
+  """
+  form = LikeForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    new_like = Like(
+      post_id = id,
+      user_id = current_user.id,
+      created_at = datetime.now(),
+      updated_at = datetime.now()
+    )
+
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
   return {'error': validation_errors_to_error_messages(form.errors)}, 400
