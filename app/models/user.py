@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     comments = db.relationship("Comment",back_populates="user", cascade="all, delete")
     educations = db.relationship("Education", back_populates="user", cascade="all, delete")
     skills = db.relationship("Skill", back_populates="user", cascade="all, delete")
+    likes = db.relationship("Like", back_populates="user", cascade="all, delete")
 
     @property
     def password(self):
