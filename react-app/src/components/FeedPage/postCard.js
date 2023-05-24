@@ -1,20 +1,42 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkCreateNewLike } from "../../store/like";
 import OpenModalButton from "../OpenModalButton";
 import PostInputPlain from "./postInputPlain";
 import DeleteModal from "./deleteModal";
 import CommentCard from "./commentCard";
 import CommentInput from "./commentInput";
 
-function PostCard({post, user, relatedComments}) {
+function PostCard({post, user, relatedComments, relatedLikes}) {
+  // post contains the info of single post
+  // user is the owner of the post
+  // relatedComments are comments for this single post
+  // relatedLikes are likes for this single post
+
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.users.allUsers);
   const [seeComment, setSeeComment] = useState(false);
   const history = useHistory();
 
+  let isCurrentUserLikesThisPost = false;
+  for(let i = 0; i < relatedLikes.length; i++) {
+    if (relatedLikes[i].user_id == sessionUser.id) isCurrentUserLikesThisPost = true
+  }
+  console.log(post.id, isCurrentUserLikesThisPost)
+
   // dafault profile pic to be light blue for other users, black for current user
   let profileColor = (post.user_id === sessionUser?.id ? "" : "color-second-blue") + " fas fa-user-circle fontS-300rem";
+
+  async function toggleLike() {
+    if (isCurrentUserLikesThisPost) {
+      console.log(post.id, isCurrentUserLikesThisPost, "toggle to off")
+
+    } else {
+      await dispatch(thunkCreateNewLike(post.id, {}))
+    }
+  }
 
   return (
     <div className="bg-white pad-15p borderR-10p boxS-0-0-2-gray mrg-tb-15p">
@@ -45,17 +67,23 @@ function PostCard({post, user, relatedComments}) {
       {post.image ? <img src={post.image} alt="post image"
         className="width-max-700p pad-lr-15p borderR-5per"/> : null}
 
-      <div className="color-main-gray flx-jc-fe">{relatedComments.length} comments</div>
+      <div className="flx-jc-sb mrg-tb-10p mrg-lr-15p">
+        <div className="color-main-gray">
+          {relatedLikes.length === 0 ? "" :
+            relatedLikes.length+" "+(relatedLikes.length > 1 ? "likes" : "like")}
+        </div>
+        <div className="color-main-gray">{relatedComments.length} comments</div>
+      </div>
 
       <hr className="color-main-gray"/>
 
       <div className="flx-jc-sa">
-        <button onClick={()=>alert("feature coming soon")}
-          className="color-main-gray bg-white border-0p color-main-blue-hover" >
-          <i className="far fa-thumbs-up"></i> Like
+        <button onClick={()=>toggleLike()}
+          className={"bg-white border-0p color-main-blue-hover fontS-105rem " + (isCurrentUserLikesThisPost ? "color-main-blue" : "color-main-gray")} >
+          <i className={isCurrentUserLikesThisPost ? "fas fa-thumbs-up" : "far fa-thumbs-up"}></i> Like
         </button>
         <button onClick={()=>setSeeComment(!seeComment)}
-          className="color-main-gray bg-white border-0p color-main-blue-hover" >
+          className="color-main-gray bg-white border-0p color-main-blue-hover fontS-105rem" >
           <i className="far fa-comment-alt"></i> Comment
         </button>
       </div>

@@ -6,6 +6,7 @@ import userReducer from './user';
 import commentReducer from './comment';
 import educationReducer from './education';
 import skillReducer from './skill';
+import likeReducer from './like';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   posts: postReducer,
   comments: commentReducer,
   educations: educationReducer,
-  skills: skillReducer
+  skills: skillReducer,
+  likes: likeReducer
 });
 
 

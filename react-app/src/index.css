@@ -257,6 +257,10 @@ button:hover {
   font-size: initial;
 }
 
+.fontS-105rem {
+  font-size: 1.05rem;
+}
+
 .fontS-115rem {
   font-size: 1.15rem;
 }

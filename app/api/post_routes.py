@@ -137,7 +137,7 @@ def createNewComment(id):
 #================== create new like ==================
 @post_routes.route('/<int:id>/likes', methods=['POST'])
 @login_required
-def createLike():
+def createLike(id):
   """
   return new like if all properties pass validation of like
   """
