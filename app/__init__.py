@@ -11,6 +11,7 @@ from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
 from .api.education_routes import education_routes
 from .api.skill_routes import skill_routes
+from .api.like_routes import like_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -36,6 +37,7 @@ app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(education_routes, url_prefix='/api/educations')
 app.register_blueprint(skill_routes, url_prefix='/api/skills')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
 db.init_app(app)
 Migrate(app, db)
 
