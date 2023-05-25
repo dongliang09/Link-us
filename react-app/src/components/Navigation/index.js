@@ -24,12 +24,12 @@ function Navigation({ isLoaded }){
 			{isLoaded && sessionUser && (
 				<li className='li-none flx-jc-sb width-max-1000p width-1100p'>
 
-						<div className='bg-gray mrg-tb-auto borderR-10p pad-5p'>
-							<form >
+						<div className='bg-gray mrg-tb-auto borderR-10p'>
+							{/* <form >
 								<i className="fas fa-search pad-l-5p"></i>
 								<input placeholder='Search coming soon'
 									className='bg-gray border-0p'/>
-							</form>
+							</form> */}
 						</div>
 						<div>
 							<ProfileButton user={sessionUser} />

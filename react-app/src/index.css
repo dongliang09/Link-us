@@ -337,6 +337,11 @@ button:hover {
   grid-template-columns: 1fr 5fr 1fr;
 }
 
+.grid-2-7-2 {
+  display: grid;
+  grid-template-columns: 2fr 7fr 2fr;
+}
+
 .hgt-max-100p {
   max-height: 100px;
 }

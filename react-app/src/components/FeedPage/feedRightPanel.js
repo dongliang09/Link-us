@@ -10,11 +10,12 @@ function FeedRightPanel() {
       <div><i className="fas fa-highlighter"></i> Educations</div>
       <div><i className="fas fa-highlighter"></i> Skills</div>
       <div><i className="fas fa-highlighter"></i> Image upload</div>
+      <div><i className="fas fa-highlighter"></i> Like</div>
 
       <div className="mrg-tb-5p fontW-600">Coming Features</div>
       <div><i className="far fa-lightbulb"></i> Following</div>
       <div><i className="far fa-lightbulb"></i> Search</div>
-      <div><i className="far fa-lightbulb"></i> Like</div>
+
     </div>
   )
 }

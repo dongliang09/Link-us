@@ -30,7 +30,7 @@ function FeedPage() {
 
   return (
     <div className="bg-gray pad-t-150rem">
-      <div className="grid-1-5-1 gap-15p width-max-1100p mrg-lr-auto">
+      <div className="grid-2-7-2 gap-15p width-max-1100p mrg-lr-auto">
         <FeedLeftPanel currentUser={sessionUser}/>
         <div>
           <div className="mrg-b-15p">

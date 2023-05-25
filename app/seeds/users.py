@@ -15,11 +15,27 @@ def seed_users():
     me = User(
         firstName='Dongliang', lastName='Li', email='dongliang14@gmail.com', password='password')
 
+    abraham = User(
+        firstName='Abrham', lastName='Gu', email='abraham@aa.io', password='password')
+    isaac = User(
+        firstName='Isaac', lastName='Liang', email='isaac@aa.io', password='password')
+    methuselah = User(
+        firstName='Methuselah', lastName='Tseng', email='methuselah@aa.io', password='password')
+    jacob = User(
+        firstName='Jacob', lastName='Chu', email='jacob@aa.io', password='password')
+    xi = User(
+        firstName='Xi', lastName='Ling', email='xi@aa.io', password='password')
+
+    zilin = User(
+        firstName='Zilin', lastName='Luo', email='zilin@aa.io', password='password')
+
+    more_users = [abraham, isaac, methuselah, jacob, xi, zilin]
     db.session.add(demo)
     db.session.add(abel)
     db.session.add(enoch)
     db.session.add(noah)
     db.session.add(me)
+    [db.session.add(user) for user in more_users]
     db.session.commit()
 
 
