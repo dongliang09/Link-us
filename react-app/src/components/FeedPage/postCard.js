@@ -101,7 +101,7 @@ function PostCard({post, user, relatedComments, relatedLikes}) {
 
         {relatedComments.map(comment =>
           <CommentCard comment={comment} postOwner={allUsers[post.user_id]}
-            user={allUsers[comment.user_id]} key={comment.id} />)}
+            commentUser={allUsers[comment.user_id]} key={comment.id} />)}
 
       </div>}
 

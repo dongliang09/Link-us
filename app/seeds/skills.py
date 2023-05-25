@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 def seed_skills():
   #user1
   user1_trouble_shoot = Skill(skill="Troubleshoot", user_id=1)
-  user1_microsoft_word = Skill(skill="MicroSoft Word", user_id=1)
+  user1_microsoft_word = Skill(skill="Microsoft Word", user_id=1)
 
   user1_skills = [user1_trouble_shoot, user1_microsoft_word]
 
